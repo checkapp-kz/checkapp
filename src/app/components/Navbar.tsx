@@ -65,10 +65,12 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <Button
-        className="bg-[#1D7CBC] hover:bg-[#1D7CBC] hover:drop-shadow-md transition ease-in-out delay-150 lg:ml-auto hover:-translate-y-1 hover:scale-110 duration-300">
+      <Link
+        href="/auth"
+        className="bg-[#1D7CBC] hover:bg-[#1D7CBC] text-white rounded-xl px-4 py-2 hover:drop-shadow-md transition ease-in-out delay-150 lg:ml-auto duration-300"
+      >
         Войти
-      </Button>
+      </Link>
     </nav>
   )
 }
