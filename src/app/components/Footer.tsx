@@ -62,7 +62,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="mt-8 lg:mt-16 border-t py-4">
+      <div className="border-t py-4">
         <p className="text-[#626981] text-sm">©2024 Batrbekk · All rights reserved.</p>
       </div>
     </footer>

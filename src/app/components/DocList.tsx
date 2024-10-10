@@ -34,7 +34,7 @@ const DocList = () => {
   ];
 
   return (
-    <section className="container mx-auto py-16 lg:py-28 px-4 lg:px-0">
+    <section className="container mx-auto py-12 lg:py-16 px-4 lg:px-0">
       <div className="flex flex-col items-center gap-y-8">
         {docsList.map((item, index) => (
           <div
