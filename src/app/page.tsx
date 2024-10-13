@@ -23,7 +23,6 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <Headline />
       <Stepper />
-      <Ask />
       <CheckCards />
       <Statistic />
       <Partners />
