@@ -78,7 +78,7 @@ const Navbar = () => {
         <div className='flex items-center gap-x-4'>
           <Select defaultValue="RU">
             <SelectTrigger className="w-20">
-              <SelectValue placeholder="RU"/>
+              <SelectValue placeholder="RU" className="placeholder:text-[#4B5162]" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>

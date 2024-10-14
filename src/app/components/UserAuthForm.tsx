@@ -2,16 +2,16 @@
 
 import * as React from "react"
 
+import {useState} from "react";
 import { cn } from "@/lib/utils"
-import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
-import {Label} from "@/components/ui/label";
 import { Icons } from "@/components/ui/icons";
+import { Button } from "@/components/ui/button";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
@@ -27,9 +27,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              Email
-            </Label>
             <Input
               id="email"
               placeholder="email@example.com"
@@ -38,13 +35,14 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading}
+              className="border-[#4B5162]"
             />
           </div>
           <Button disabled={isLoading} className="bg-[#1D7CBC] hover:bg-[#1D7CBC]">
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Зарегестрироваться
+            Продолжить
           </Button>
         </div>
       </form>
