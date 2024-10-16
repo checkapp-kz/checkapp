@@ -1,8 +1,39 @@
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {Button} from "@/components/ui/button";
+import {useCallback, useState} from "react";
+import {toast} from "@/hooks/use-toast";
 
 const CompanyForm = () => {
+  const [name, setName] = useState('');
+  const [mail, setMail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const sendMail = useCallback(async () => {
+    setIsLoading(true);
+    const response = await fetch('http://localhost:3000/api/partner', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        mail: mail,
+        text: message
+      })
+    }).finally(() => {
+      setIsLoading(false)
+      setName('');
+      setMail('');
+      setMessage('');
+      toast({
+        description: "Письмо успешно отправлено"
+      });
+    });
+
+  }, [mail, message, name]);
+
   return (
     <section className="container mx-auto py-12 px-4 lg:px-0">
       <div className="flex items-stretch flex-col lg:flex-row justify-center rounded-2xl overflow-hidden">
@@ -39,14 +70,32 @@ const CompanyForm = () => {
         </div>
         <div className="w-full lg:w-1/2 bg-gradient-to-r from-[#3447F6] to-[#4CBFFF] p-8 flex flex-col gap-y-4 text-white">
           <h1 className="text-3xl font-bold">Напишите нам</h1>
-          <Input type="name" placeholder="Имя"
-                 className="focus-visible:ring-0 border-white placeholder:text-white rounded-lg h-14 text-lg"/>
-          <Input type="email" placeholder="Почта"
-                 className="focus-visible:ring-0 border-white placeholder:text-white rounded-lg h-14 text-lg"/>
-          <Textarea placeholder="Напишите письмо"
-                    className="focus-visible:ring-0 border-white placeholder:text-white resize-none rounded-lg h-20 text-lg"/>
-          <Button className="bg-white text-[#1C1F25] hover:bg-white rounded-lg">
-            Отправить
+          <Input
+            type="name"
+            placeholder="Имя"
+            className="focus-visible:ring-0 border-white placeholder:text-white rounded-lg h-14 text-lg"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            type="email"
+            placeholder="Почта"
+            className="focus-visible:ring-0 border-white placeholder:text-white rounded-lg h-14 text-lg"
+            value={mail}
+            onChange={(e) => setMail(e.target.value)}
+          />
+          <Textarea
+            placeholder="Напишите письмо"
+            className="focus-visible:ring-0 border-white placeholder:text-white resize-none rounded-lg h-20 text-lg"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <Button
+            disabled={isLoading}
+            className="bg-white text-[#1C1F25] hover:bg-white rounded-lg"
+            onClick={sendMail}
+          >
+            {isLoading ? 'Идет отправка...' : 'Отправить'}
           </Button>
         </div>
       </div>

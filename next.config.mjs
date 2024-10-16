@@ -4,6 +4,15 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true, // Игнорировать ошибки ESLint при сборке
     },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**',
+                port: '',
+            },
+        ],
+    }
 };
 
 export default nextConfig;

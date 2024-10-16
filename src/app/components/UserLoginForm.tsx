@@ -10,13 +10,13 @@ import { Button } from "@/components/ui/button";
 import {PasswordInput} from "@/components/ui/password-input";
 import {useRouter} from "next/navigation";
 import {toast} from "@/hooks/use-toast";
+import {setCookie} from "cookies-next";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
   const router = useRouter();
 
-  const [name, setName] = useState('');
   const [mail, setMail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -26,13 +26,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://check-app-admin.vercel.app/api/registration', {
+    const response = await fetch('https://check-app-admin.vercel.app/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        name: name,
         email: mail,
         password: password
       })
@@ -41,7 +40,9 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     });
 
     if (response.ok) {
-      router.push('/login');
+      const data = await response.json();
+      setCookie('user-token', data.token);
+      router.push('/');
     } else {
       toast({
         variant: 'destructive',
@@ -56,16 +57,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <Input
-              id="name"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder="Ваше имя"
-              type="text"
-              autoComplete="name"
-              disabled={isLoading}
-              className="border-[#4B5162]"
-            />
             <Input
               id="email"
               value={mail}
@@ -93,7 +84,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Зарегистрироваться
+            Войти
           </Button>
         </div>
       </form>

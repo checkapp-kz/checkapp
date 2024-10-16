@@ -4,7 +4,6 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Stepper from "@/app/components/Stepper";
 import Headline from "@/app/components/Headline";
-import Ask from "@/app/components/Ask";
 import CheckCards from "@/app/components/CheckCards";
 import Statistic from "@/app/components/Statistic";
 import Partners from "@/app/components/Partners";

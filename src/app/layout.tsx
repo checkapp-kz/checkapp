@@ -3,6 +3,7 @@ import React from "react";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import {Toaster} from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "CheckApp",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <Navbar />
         <main className="mt-[65px] lg:mt-[89px]">{children}</main>
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

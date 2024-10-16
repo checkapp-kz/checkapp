@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select";
+import UserComponent from "@/app/components/User";
 
 const Navbar = () => {
   const links = [
@@ -20,7 +21,7 @@ const Navbar = () => {
     },
     {
       label: 'Чекап-пакеты',
-      link: '#check-list'
+      link: '/#check-list'
     },
     {
       label: 'Компаниям',
@@ -28,11 +29,11 @@ const Navbar = () => {
     },
     {
       label: 'Партнеры',
-      link: '#partners'
+      link: '/#partners'
     },
     {
       label: 'FAQ',
-      link: '#faq'
+      link: '/#faq'
     },
     {
       label: 'Praxis podcast',
@@ -88,12 +89,7 @@ const Navbar = () => {
               </SelectGroup>
             </SelectContent>
           </Select>
-          <Link
-            href="/auth"
-            className="bg-[#1D7CBC] hover:bg-[#1D7CBC] text-white rounded-lg px-4 py-2 hover:drop-shadow-md transition ease-in-out delay-150 lg:ml-auto duration-300"
-          >
-            Войти
-          </Link>
+          <UserComponent />
         </div>
       </div>
     </nav>
