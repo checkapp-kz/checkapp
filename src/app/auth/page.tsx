@@ -60,14 +60,16 @@ export default function Home() {
               <p className="px-8 text-center text-sm text-muted-foreground">
                Нажимая продолжить, вы соглашаетесь с нашими{" "}
                 <Link
-                  href="#terms"
+                  href="https://checkapp.kz/public-offer.pdf"
+                  target="_blank"
                   className="underline underline-offset-4 hover:text-primary"
                 >
                   Условиями использования
                 </Link>{" "}
                 и{" "}
                 <Link
-                  href="#privacy"
+                  href="https://checkapp.kz/politic-use-data.pdf"
+                  target="_blank"
                   className="underline underline-offset-4 hover:text-primary"
                 >
                   Политикой конфиденциальности

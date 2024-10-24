@@ -16,10 +16,10 @@ const Partners = () => {
       <h1 className="text-center text-[#1C1F25] font-semibold text-3xl lg:text-5xl">Наши партнеры</h1>
       <p className="text-sm lg:text-base text-[#4B5162]">
         Напишите нам на элек.почту <a
-        href="mailto:checkapp.kz@gmail.com"
+        href="mailto:info@checkapp.kz"
         className="underline text-[#1D7CBC]"
       >
-        checkapp.kz@gmail.com
+        info@checkapp.kz
       </a>
       </p>
       <Carousel

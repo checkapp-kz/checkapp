@@ -7,27 +7,27 @@ const Reviews = () => {
   const reviewList = [
     {
       id: 1,
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Тут может быть ваш отзыв',
       author: 'Linda F.'
     },
     {
       id: 2,
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Тут может быть ваш отзыв',
       author: 'Linda F.'
     },
     {
       id: 3,
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Тут может быть ваш отзыв',
       author: 'Linda F.'
     },
     {
       id: 4,
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Тут может быть ваш отзыв',
       author: 'Linda F.'
     },
     {
       id: 5,
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Тут может быть ваш отзыв',
       author: 'Linda F.'
     },
   ];
@@ -36,11 +36,11 @@ const Reviews = () => {
     <section className="container mx-auto mt-24 py-16 lg:py-28">
       <div className="flex flex-col items-center gap-y-4 px-4 lg:px-0">
         <h1 className="text-center text-[#1C1F25] font-semibold text-3xl lg:text-5xl">
-          Отзывы наших клиентов
+          Отзывы
         </h1>
         <p className="text-[#4B5162] text-center">
-          В Checkapp мы гордимся тем, что предоставляем первоклассный продукт. <br />
-          Но не верьте нам на слово. Послушайте, что говорят наши довольные клиенты.
+          Мы гордимся тем, что предлагаем качественный продукт. <br />
+          Но не верьте нам на слово — лучше послушайте тех, кто уже воспользовался CheckApp
         </p>
       </div>
       <Carousel
@@ -53,13 +53,12 @@ const Reviews = () => {
         <CarouselContent>
           {reviewList.map((review) => (
             <CarouselItem key={review.id} className="basis-80 lg:basis-96">
-              <div className="px-10 py-8 border rounded-3xl max-w-[320px] flex flex-col items-center gap-y-5">
+              <div className="px-10 py-8 border rounded-3xl max-w-[320px] h-[350px] flex flex-col items-center justify-center gap-y-5 relative">
                 <p className="text-xl text-[#1C1F25] font-medium text-center">
                   {review.text}
                 </p>
-                <div className="flex flex-col items-center gap-y-3">
+                <div className="absolute flex flex-col items-center gap-y-3 bottom-8">
                   <Image src={Ava} alt="ava-img" />
-                  <p className="font-semibold text-[#343844]">{review.author}</p>
                 </div>
               </div>
             </CarouselItem>

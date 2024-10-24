@@ -12,16 +12,19 @@ const CheckCards = () => {
     {
       img: Card1,
       title: 'Спортивный',
+      // link: '/sportTest'
       link: '#'
     },
     {
       img: Card2,
       title: 'Женский',
+      // link: '/womanTest'
       link: '#'
     },
     {
       img: Card3,
       title: 'Мужской',
+      // link: '/manTest'
       link: '#'
     }
   ];

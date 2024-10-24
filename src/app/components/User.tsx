@@ -2,7 +2,7 @@
 
 import {useCallback, useEffect, useState} from "react";
 import {List, User} from "lucide-react";
-import {deleteCookie, getCookie} from "cookies-next";
+import {deleteCookie, getCookie, setCookie} from "cookies-next";
 import Link from "next/link";
 import {Profile} from "@/app/types/profile";
 import {Skeleton} from "@/components/ui/skeleton";
@@ -32,7 +32,9 @@ const UserComponent = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setMe(data); // Устанавливаем данные пользователя
+        setMe(data);
+        setCookie('user-name', data.name);
+        setCookie('user-email', data.email);
       }
     } catch (error) {
       console.error("Ошибка при получении данных:", error);

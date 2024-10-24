@@ -1,4 +1,5 @@
 import {Facebook, Instagram, Mail, PhoneCall} from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -10,8 +11,8 @@ const Footer = () => {
           </h6>
           <div className="flex items-center gap-x-2">
             <Mail className="text-[#519B8E]"/>
-            <a href="mailto:checkapp.kz@gmail.com" className="text-[#4B5162] font-medium">
-              checkapp.kz@gmail.com
+            <a href="mailto:info@checkapp.kz" className="text-[#4B5162] font-medium">
+              info@checkapp.kz
             </a>
           </div>
           <div className="flex items-start gap-x-2">
@@ -47,19 +48,22 @@ const Footer = () => {
           <h6 className="text-[#343844] font-bold">
             Разное
           </h6>
-          <a href="#" target="_blank" className="text-[#4B5162] font-medium">
+          <a href="https://checkapp.kz/public-offer.pdf" target="_blank" className="text-[#4B5162] font-medium">
             Публичная оферта
           </a>
-          <a href="#" target="_blank" className="text-[#4B5162] font-medium">
+          <a href="https://checkapp.kz/politic-save-data.pdf" target="_blank" className="text-[#4B5162] font-medium">
             Политика хранения
           </a>
-          <a href="#" target="_blank" className="text-[#4B5162] font-medium">
+          <a href="https://checkapp.kz/politic-destroy-data.pdf" target="_blank" className="text-[#4B5162] font-medium">
             Политика уничтожения
           </a>
-          <a href="#" target="_blank" className="text-[#4B5162] font-medium">
+          <a href="https://checkapp.kz/politic-use-data.pdf" target="_blank" className="text-[#4B5162] font-medium">
             Политика по сбору и обработке
             персональных данных
           </a>
+          <Link href="/payment-rule" className="text-[#4B5162] font-medium">
+            Условиями оплаты и возрата платежей
+          </Link>
         </div>
       </div>
       <div className="border-t py-4">
