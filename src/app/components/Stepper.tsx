@@ -91,8 +91,8 @@ const Stepper = () => {
       <div className="flex justify-center mt-16">
         <h1 className="text-[#1C1F25] text-3xl lg:text-5xl font-semibold w-full lg:w-2/3 text-center">CheckApp - персонализированные чекапы от консилиумов врачей</h1>
       </div>
-      <div className="stepper-container flex flex-col items-center justify-center gap-y-16 min-h-dvh">
-        <h1 className="text-4xl text-[#1C1F25] font-semibold">Как работает CheckApp?</h1>
+      <div className="stepper-container flex flex-col items-start justify-center gap-y-8 min-h-dvh">
+        <h1 className="text-4xl text-[#1C1F25] font-semibold ml-28">Как работает CheckApp?</h1>
         <div className="container mx-auto hidden lg:flex items-center gap-x-16">
           <div className="flex flex-col items-end gap-y-16">
             {stepList.map((step) => (
