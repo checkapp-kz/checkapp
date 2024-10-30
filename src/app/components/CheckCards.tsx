@@ -13,19 +13,22 @@ const CheckCards = () => {
       img: Card1,
       title: 'Спортивный',
       // link: '/sportTest'
-      link: '#'
+      link: '#',
+      price: '5 990 ₸'
     },
     {
       img: Card2,
       title: 'Женский',
       // link: '/womanTest'
-      link: '#'
+      link: '#',
+      price: '4 990 ₸'
     },
     {
       img: Card3,
       title: 'Мужской',
       // link: '/manTest'
-      link: '#'
+      link: '#',
+      price: '4 990 ₸'
     }
   ];
 
@@ -46,11 +49,12 @@ const CheckCards = () => {
       >
         <CarouselContent>
           {cardList.map((card, index) => (
-            <CarouselItem key={index} className="basis-80 lg:basis-1/3 relative flex items-center justify-center group">
+            <CarouselItem key={index} className="basis-80 lg:basis-1/3 relative flex items-end justify-center group">
               <Image src={card.img} alt="check-card" />
-              <div className="absolute flex flex-col items-center gap-y-4">
+              <div className="absolute flex flex-col items-center gap-y-2 bottom-4 lg:bottom-8 w-[80%]">
                 <h4 className="text-white font-semibold text-xl lg:text-4xl">{card.title}</h4>
-                <Link href={card.link} className="text-white border rounded border-white flex items-center justify-center w-fit px-4 py-2 opacity-0 group-hover:opacity-100 transition duration-300">
+                <p className="text-white text-lg">Цена: {card.price}</p>
+                <Link href={card.link} className="text-white border rounded border-white mt-2 flex items-center justify-center w-full px-4 py-2 opacity-0 group-hover:opacity-100 transition duration-300">
                   Узнать подробнее
                 </Link>
               </div>
