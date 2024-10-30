@@ -56,6 +56,15 @@ const DocList = () => {
 
   return (
     <section className="container mx-auto py-12 lg:py-16 px-4 lg:px-0">
+      <h4 className="mb-16 text-[#1C1F25] text-lg">
+        В наших консилиумах работают высококвалифицированные врачи, объединенные общими ценностями и принципами, которые
+        лежат в основе CheckApp. Мы придерживаемся принципов доказательной медицины, основываясь на фактах и научных
+        исследованиях, и стремимся к честности в каждом аспекте нашей работы. Наши специалисты не назначают ничего
+        лишнего, ценят пациентов и постоянно развиваются, чтобы предоставлять актуальные и эффективные рекомендации. С
+        заботой о репутации и добром имени, они стремятся сделать людей счастливыми через здоровье, показывая оптимизм и
+        человечность в каждом взаимодействии. Мы верим, что настоящая забота о здоровье начинается с глубокого понимания
+        к каждому пациенту. Именно поэтому основа CheckApp – персонализированный подход.
+      </h4>
       <div className="flex flex-col items-center gap-y-8">
         {docsList.map((item, index) => (
           <div
@@ -64,7 +73,7 @@ const DocList = () => {
               ${index % 2 === 0 ? '' : 'flex-row-reverse'}
               ${index !== docsList.length - 1 ? 'border-b' : ''}`} // Проверка на последний элемент
           >
-            <Image src={item.img} alt="doctor-img" className="rounded-2xl" />
+            <Image src={item.img} alt="doctor-img" className="rounded-2xl"/>
             <div className="flex flex-col gap-y-4">
               <h3 className="text-3xl font-bold text-[#1C1F25]">{item.name}</h3>
               <p className="px-4 py-2 rounded-full bg-[#1D7CBC] text-white w-fit shadow-md">
