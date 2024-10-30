@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {cn} from "@/lib/utils";
-import {Button} from "@/components/ui/button";
 import Carousel1 from "@/public/carousel/1.svg";
 import Carousel2 from "@/public/carousel/2.svg";
 import Carousel3 from "@/public/carousel/3.svg";
@@ -13,19 +12,19 @@ const Headline = () => {
     {
       img: Carousel1,
       title: 'Спортивный',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Персональные планы обследования для активных людей и спортсменов. Пройдите чекап и тренируйтесь без вреда для здоровья',
       side: 'right'
     },
     {
       img: Carousel2,
       title: 'Женский',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Любовь к себе начинается с заботы о своем здоровье. Подарите себе персонализированный подход с планом обследования от консилиума врачей, в которых учтены действительно только необходимые показатели для женского здоровья.',
       side: 'left'
     },
     {
       img: Carousel3,
       title: 'Мужской',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+      text: 'Крепкое мужское здоровье с персонализированными планами обследования. Только важные и необходимые анализы, подобранные именно для вас. Пройдите чекап сегодня для большей энергии и уверенности каждый день.',
       side: 'left'
     }
   ];

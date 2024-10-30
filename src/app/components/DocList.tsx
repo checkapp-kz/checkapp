@@ -10,21 +10,47 @@ const DocList = () => {
       img: Doctor1,
       position: 'Врач гинеколог',
       name: 'Омарова Жанара Дисембаевна',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.'
+      text: (
+        <>
+          <p>
+            10 лет практики в гинекологии, в том числе в детской, функциональной и ультразвуковой диагностике по гинекологическому профилю. Сотни часов приемов амбулаторных пациентов в ведущей клинике женского здоровья страны – Evidence Clinic под руководством Доктора медицинских наук, Отличника здравоохранения – Заремы Габдильашимовой.
+          </p>
+          <p>
+            Практический опыт ведения стационарных пациентов перинатального центра с физиологическим и патологическим течением беременности и ведения родов под руководством опытнейшего доктора Гульнары Калыковой. Владея тремя языками, непрерывно повышает квалификацию, участвуя в различных международных конференциях и конгрессах врачей, а также проходя узконаправленные образовательные международные программы в гинекологии.
+          </p>
+        </>
+      )
     },
     {
       id: 2,
       img: Doctor2,
       position: 'Врач уролог-андролог',
       name: 'Фролов Ростислав Александрович',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.'
+      text: (
+        <>
+          <p>
+            9 лет практического опыта в клиниках Алматы и Астаны, автор 52 научных статей по урологии и андрологии, в том числе учебника “Urology” для иностранных студентов, утвержденных Министерством Здравоохранения Республики Казахстан. Ученик Хамзина Адильжана Акжигитовича - Доктора медицинских наук, профессора, блестящего уролога-хирурга.
+          </p>
+          <p>
+            Ростислав Александрович непрерывно занимается повышением квалификации, в том числе по таким темам как: эндоскопические методы диагностики и лечения мочекаменной болезни и доброкачественная гиперплазия предстательной железы, эстетическая и практическая урогинекология и основы уродинамики, методы коррекции и дисфункции тазового дна, тазовые боли и нарушение мочеиспускания у женщин, вопросы детской урологии, лечение и хирургия доброкачественной обструкции предстательной железы.
+          </p>
+          <p>
+            Занимается вопросами сексологии и мужской эндокринологии, активно ведет популяризаторскую деятельность и развенчивает мифы мужского здоровья и урологии.
+          </p>
+        </>
+      )
     },
     {
       id: 3,
       img: Doctor3,
       position: 'Спортивный врач',
       name: 'Реймер Эвальд Олегович',
-      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.'
+      text: (
+        <>
+          <p>Более 10 лет опыта в медицине. Пройдя стажировки в России, Великобритании и Израиле, Реймер Олегович демонстрирует высокий уровень профессионализма и этики в спортивной медицине. Он тесно сотрудничает с национальными командами по триатлону, биатлону, женскому боксу и легкой атлетике, а также активно взаимодействует с Центром спортивной медицинской реабилитации.</p>
+          <p>Наш специалист придерживается индивидуального подхода, воплощая принципы персонализированной медицины как в любительском, так и в профессиональном спорте. Доверьте свое здоровье эксперту, который понимает важность поддержания вашего тела в превосходной форме.</p>
+        </>
+      )
     }
   ];
 
@@ -44,7 +70,9 @@ const DocList = () => {
               <p className="px-4 py-2 rounded-full bg-[#1D7CBC] text-white w-fit shadow-md">
                 {item.position}
               </p>
-              <p className="text-[#4B5162] text-ld">{item.text}</p>
+              <div className="text-[#4B5162] text-ld flex flex-col gap-y-2">
+                {item.text}
+              </div>
             </div>
           </div>
         ))}

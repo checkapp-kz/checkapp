@@ -48,16 +48,16 @@ const Footer = () => {
           <h6 className="text-[#343844] font-bold">
             Разное
           </h6>
-          <a href="https://checkapp.kz/public-offer.pdf" target="_blank" className="text-[#4B5162] font-medium">
+          <Link href="https://drive.google.com/file/d/16rmid9bkQKIcWQCECC1IIeFUovFDKCfp/view?usp=drive_link" target="_blank" className="text-[#4B5162] font-medium">
             Публичная оферта
-          </a>
-          <a href="https://checkapp.kz/politic-save-data.pdf" target="_blank" className="text-[#4B5162] font-medium">
+          </Link>
+          <a href="https://drive.google.com/file/d/1nv6bowWYPuI5YB4uN4jlpYjFQRLPvASy/view?usp=drive_link" target="_blank" className="text-[#4B5162] font-medium">
             Политика хранения
           </a>
-          <a href="https://checkapp.kz/politic-destroy-data.pdf" target="_blank" className="text-[#4B5162] font-medium">
+          <a href="https://drive.google.com/file/d/1s7VA0Q-C3I5LF9acDsyh8PtnXiBYv01s/view?usp=drive_link" target="_blank" className="text-[#4B5162] font-medium">
             Политика уничтожения
           </a>
-          <a href="https://checkapp.kz/politic-use-data.pdf" target="_blank" className="text-[#4B5162] font-medium">
+          <a href="https://drive.google.com/file/d/1q9QMpQ1WMR3Kg8c3BBL9o0OBfS8d_oth/view?usp=drive_link" target="_blank" className="text-[#4B5162] font-medium">
             Политика по сбору и обработке
             персональных данных
           </a>
