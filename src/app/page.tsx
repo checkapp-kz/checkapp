@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import Stepper from "@/app/components/Stepper";
 import Headline from "@/app/components/Headline";
 import CheckCards from "@/app/components/CheckCards";
-import Statistic from "@/app/components/Statistic";
 import Partners from "@/app/components/Partners";
 import Faq from "@/app/components/Faq";
 import Reviews from "@/app/components/Reviews";

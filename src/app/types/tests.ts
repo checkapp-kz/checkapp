@@ -201,8 +201,12 @@ export const SportTest = [
         value: 'd'
       },
       {
+        label: 'Нет',
+        value: 'e'
+      },
+      {
         label: 'Другое',
-        value: 'e',
+        value: 'f',
         form: true
       }
     ]

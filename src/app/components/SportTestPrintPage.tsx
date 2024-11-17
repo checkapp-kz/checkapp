@@ -35,7 +35,7 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
         </div>
         <div className="mt-6">
           <h4>
-            Благодарим вас за то, что воспользовались услугами CheckApp!
+            Благодарим вас за то, что воспользовались услугами <b>CheckApp!</b>
           </h4>
           <h4 className="mt-4">
             Данные рекомендации подготовлены по результатам пройденного вами анкетирования и составлены консилиумом
@@ -86,84 +86,78 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
               <p>{(answer[2].answer.weight / (answer[2].answer.height * answer[2].answer.height)) * 10000}</p>
             </div>
             <div className="flex items-start gap-x-2 border-b px-2">
-              <p className="w-1/2">Вы когда-нибудь теряли сознание или почти теряли сознание во время или после
-                тренировки?</p>
-              {answer[6].answer === 'a' && (
-                <p className="font-bold">ДА</p>
+              <p className="w-1/2">Имеются ли у вас следующие диагнозы и/или симптомы?</p>
+              {answer[3].answer === 'a' && (
+                <p className="font-bold">Травмы головы и/или сотрясение мозга</p>
               )}
             </div>
-            {answer[7].answer === 'a' && (
-              <div className="flex items-start gap-x-2 border-b px-2">
-                <p className="w-1/2">
-                  Испытывали ли вы когда-нибудь дискомфорт, боль, стеснение или давление в груди во время физических
-                  упражнений?
-                </p>
+            <div className="flex items-start gap-x-2 border-b px-2">
+              <p className="w-1/2">Связанное со здоровьем сердца:</p>
+              {answer[4].answer === 'a' && (
+                <p className="font-bold">Высокое кровяное давление</p>
+              )}
+            </div>
+            <div className="flex items-start gap-x-2 border-b px-2">
+              <p className="w-1/2">В истории вашей семьи умирал ли кто-либо из ее членов или близких родственников:</p>
+              {answer[7].answer === 'c' && (
+                <p className="font-bold">Необъяснимой автомобильной аварии</p>
+              )}
+            </div>
+            <div className="flex items-start gap-x-2 border-b px-2">
+              <p className="w-1/2">Вы когда-нибудь теряли сознание или почти теряли сознание во время или после
+                тренировки?</p>
+              {answer[8].answer === 'a' && (
                 <p className="font-bold">ДА</p>
-              </div>
-            )}
-            {answer[9].answer === 'a' && (
-              <div className="flex items-start gap-x-2 border-b px-2">
-                <p className="w-1/2">
-                  Во время упражнений вы устаете или задыхаетесь быстрее, чем ваши сокомандники или люди в окружении
-                  одного с вами возраста, выполняющие схожие нагрузки?
-                </p>
+              )}
+              {answer[8].answer === 'b' && (
+                <p className="font-bold">НЕТ</p>
+              )}
+            </div>
+            <div className="flex items-start gap-x-2 border-b px-2">
+              <p className="w-1/2">
+                Были ли необъяснимые припадки, приступы эпилепсии:
+              </p>
+              {answer[9].answer === 'a' && (
                 <p className="font-bold">ДА</p>
-              </div>
-            )}
-            {(answer[10].answer === 'a' || answer[10].answer === 'b' || answer[10].answer === 'c' || answer[10].answer === 'd' || answer[10].answer === 'e' || answer[10].answer === 'f') && (
+              )}
+              {answer[9].answer === 'b' && (
+                <p className="font-bold">НЕТ</p>
+              )}
+            </div>
+            {(answer[6].answer === 'a' || answer[6].answer === 'b' || answer[6].answer === 'c' || answer[6].answer === 'd') && (
               <div className="flex items-start gap-x-2 border-b px-2">
                 <p className="w-1/2">
-                  Давайте пройдемся по имеющимся у вас диагнозам, связанными со здоровьем костей и суставов:
+                  Ваши хронические заболевания:
                 </p>
                 <p className="font-bold">
-                  {answer[10].answer === 'a' && 'нестабильность шейных позвонков/атлантоаксиальная нестабильность'}
-                  {answer[10].answer === 'b' && 'синдром Дауна'}
-                  {answer[10].answer === 'c' && 'карликовость'}
-                  {answer[10].answer === 'd' && 'травмы костей, мышц, связок или сухожилий'}
-                  {answer[10].answer === 'e' && 'стрессовый перелом'}
-                  {answer[10].answer === 'f' && 'заболевания суставов и связок'}
-                </p>
-              </div>
-            )}
-            {answer[11].answer !== 'l' && (
-              <div className="flex items-start gap-x-2 border-b px-2">
-                <p className="w-1/2">
-                  Давайте пройдемся по общим медицинским вопросам, необходимым для корректного анамнеза:
-                </p>
-                <p className="font-bold">
-                  {answer[10].answer === 'a' && 'Астма'}
-                  {answer[10].answer === 'b' && 'Депрессию или тревога'}
-                  {answer[10].answer === 'c' && 'Боль в паху или болезненная выпуклость либо грыжа в паховой области'}
-                  {answer[10].answer === 'd' && 'Инфекционный мононуклеоз в течение последнего месяца'}
-                  {answer[10].answer === 'e' && 'Сыпь или другие проблемы с кожей'}
-                  {answer[10].answer === 'f' && 'Аллергия'}
-                  {answer[10].answer === 'g' && 'Кожаные инфекции'}
-                  {answer[10].answer === 'h' && 'Травма головы или сотрясения мозга'}
-                  {answer[10].answer === 'i' && 'Болит голова при физических нагрузках'}
-                  {answer[10].answer === 'j' && 'Частые мышечные судороги при физических нагрузках'}
-                  {answer[10].answer === 'k' && 'Зависимость от алкоголя или наркотиков'}
+                  {answer[6].answer === 'a' && 'Астма'}
+                  {answer[6].answer === 'b' && 'Анемия'}
+                  {answer[6].answer === 'c' && 'Диабет'}
+                  {answer[6].answer === 'd' && 'Инфекции - частые ОРВИ, ангина/тонзиллит, отит'}
+                  {answer[6].answer === 'e' && 'Нет'}
                 </p>
               </div>
             )}
             <div className="flex items-start gap-x-2 border-b px-2">
               <p className="w-1/2">
-                Принимаете ли вы какие-либо травяные добавки (чабрец, мята, и тд) на постоянной основе?
+                Во время упражнений вы устаете или задыхаетесь быстрее, чем ваши со-командники или люди одного с вами
+                возраста, выполняющие схожие нагрузки?
               </p>
               <p className="font-bold">
-                {answer[12].answer === 'a' ? 'Да' : 'Нет'}
+                {answer[10].answer === 'a' ? 'Да' : 'Нет'}
               </p>
             </div>
             <div className="flex items-start gap-x-2 border-b px-2">
               <p className="w-1/2">
-                Принимаете ли вы какие-либо лекарства, витамины и БАДы?
+                Принимаете ли вы какие-либо лекарства, травяные добавки, витамины и БАДы на постоянной основе?
               </p>
               <p className="font-bold">
-                {answer[13].answer === 'a' ? 'Да' : 'Нет'}
+                {answer[11].answer === 'a' ? 'Да' : 'Нет'}
               </p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center mt-6">
+        <div className="flex flex-col items-center mt-36">
           <h4 className="text-[#1D7CBC]">Рекомендации по анализам</h4>
           <div className="flex flex-col gap-y-1 w-full">
             <div className="border px-2">
@@ -184,26 +178,6 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
           <h4 className="text-[#1D7CBC]">Рекомендации по консультациям</h4>
           <div className="flex flex-col gap-y-1 w-full">
             <div className="flex flex-col gap-x-2 px-2">
-              {answer[3].answer === 'a' && (
-                <p className="border-b px-2">
-                  Консультация пульмонолога
-                </p>
-              )}
-              {answer[3].answer === 'b' && (
-                <p className="border-b px-2">
-                  Консультация терапевта + ферритин, сывороточное железо, витамин В12
-                </p>
-              )}
-              {answer[3].answer === 'c' && (
-                <p className="border-b px-2">
-                  Консультация эндокринолога
-                </p>
-              )}
-              {answer[3].answer === 'd' && (
-                <p className="border-b px-2">
-                  Консультация терапевта
-                </p>
-              )}
               {(answer[4].answer === 'a' || answer[4].answer === 'b' || answer[4].answer === 'c' || answer[4].answer === 'd') && (
                 <p className="border-b px-2">
                   Консультация кардиолога
@@ -227,7 +201,14 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
         </div>
         <div className="mt-6">
           <h4>
-            Если у вас возникают трудности при выборе специалиста для прохождения консультации, вы всегда можете пройти прием непосредственно у врачей из нашего консилиума. Вся информация, включая контактные данные, расположена на нашем сайте: <span
+            Как нашему лояльному клиенту <b>CheckApp</b> предоставляет возможность приобрести со скидкой 20% лабораторные исследования в сети <b>Invitro</b> по промокоду «CheckAppMe».
+          </h4>
+        </div>
+        <div className="mt-6">
+          <h4>
+            Если у вас возникают трудности при выборе специалиста для прохождения консультации, вы всегда можете пройти
+            прием непосредственно у врачей из нашего консилиума. Вся информация, включая контактные данные, расположена
+            на нашем сайте: <span
             className="text-[#1D7CBC]">www.checkapp.kz/doctors</span>
           </h4>
         </div>

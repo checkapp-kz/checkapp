@@ -8,25 +8,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {useReactToPrint} from "react-to-print";
 import SportTestPrintPage from "@/app/components/SportTestPrintPage";
-import {useSearchParams} from "next/navigation";
 
 export default function SportTest() {
-  const searchParams = useSearchParams(); // Retrieve search params
-  const stepParam = searchParams.get("step");
-
-  const [currentQuestionId, setCurrentQuestionId] = useState('0');
+  const [currentQuestionId, setCurrentQuestionId] = useState('1');
   const [question, setQuestion] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null); // Состояние для хранения выбранного варианта
   const [answers, setAnswers] = useState([]); // Массив для хранения ответов
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-
-  useEffect(() => {
-    // Update currentQuestionId if stepParam exists
-    if (stepParam && currentQuestionId !== stepParam) {
-      setCurrentQuestionId(stepParam);
-    }
-  }, [currentQuestionId, stepParam]);
 
   useEffect(() => {
     if (currentQuestionId === '13') {
@@ -212,7 +201,7 @@ export default function SportTest() {
                 <Button
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
                   onClick={() => {
-                    setCurrentQuestionId('16')
+                    setCurrentQuestionId('14')
                   }}
                 >
                   Понятно
