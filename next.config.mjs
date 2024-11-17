@@ -12,7 +12,10 @@ const nextConfig = {
                 port: '',
             },
         ],
-    }
+    },
+    experimental: {
+        missingSuspenseWithCSRBailout: false,
+    },
 };
 
 export default nextConfig;
