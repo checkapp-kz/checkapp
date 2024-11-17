@@ -138,7 +138,7 @@ export default function SportTest() {
     urlencoded.append("CLIENT_IP", "192.168.0.103");
     urlencoded.append("M_INFO", "ewoJImJyb3dzZXJTY3JlZW5IZWlnaHQiOiIxOTIwIiwKCSJicm93c2VyU2NyZWVuV2lkdGgiOiIxMDgwIiwKCSJtb2JpbGVQaG9uZSI6ewoJCSJjYyI6ICI3IiAsCgkJInN1YnNjcmliZXIiOiI3NDc1NTU4ODg4IgoJfQp9");
 
-    const requestOptions = {
+    const requestOptions:RequestInit = {
       method: 'POST',
       body: urlencoded,
       redirect: 'follow'
