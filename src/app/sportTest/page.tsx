@@ -10,7 +10,7 @@ import {useReactToPrint} from "react-to-print";
 import SportTestPrintPage from "@/app/components/SportTestPrintPage";
 
 export default function SportTest() {
-  const [currentQuestionId, setCurrentQuestionId] = useState('1');
+  const [currentQuestionId, setCurrentQuestionId] = useState('0');
   const [question, setQuestion] = useState(null);
   const [selectedVariant, setSelectedVariant] = useState(null); // Состояние для хранения выбранного варианта
   const [answers, setAnswers] = useState([]); // Массив для хранения ответов
@@ -115,7 +115,7 @@ export default function SportTest() {
     urlencoded.append("MERCH_RN_ID", "AF1POST90033686");
     urlencoded.append("DESC", "TRTYPE=1 test transaction (Frictionless Flow)");
     urlencoded.append("MERCHANT", "90033686");
-    urlencoded.append("MERCH_NAME", 'TOO CHECK APP"');
+    urlencoded.append("MERCH_NAME", 'TOO CHECK APP');
     urlencoded.append("TERMINAL", "88888881");
     urlencoded.append("TIMESTAMP", timestamp);
     urlencoded.append("MERCH_GMT", "+6");
@@ -236,7 +236,25 @@ export default function SportTest() {
             </div>
           ) || currentQuestionId === '0' && (
             <div className="flex flex-col gap-y-4">
-              <Button className="bg-[#1D7CBC] hover:bg-[#1D7CBC]" onClick={sendRequest}>Оплатить</Button>
+              <p>
+                Все больше людей увлекаются спортом: бег, плавание, тренажерный зал, единоборства. С ростом популярности марафонов и соревнований среди любителей, к сожалению, увеличивается и число случаев, когда занятия спортом приводят к ухудшению здоровья или даже трагическим исходам. Причина часто кроется в игнорировании важности обследования перед началом тренировок и соревнований.
+              </p>
+              <p>
+                Наш консилиум врачей под руководством эксперта, который работает со спортсменами олимпийских сборных, разработал «Спортивный чекап».  Мы предлагаем вам пройти онлайн-анкетирование для получения списка рекомендаций по сдаче анализов крови, прохождению функциональной диагностики от консилиума медицинских специалистов. “Спортивный чекап” поможет вам безопасно заниматься спортом - будь вы активный человек или начинающий спортсмен, и достигать своих целей без риска для здоровья.
+              </p>
+              <p>
+                На сегодня существующие чекап-пакеты перегружены ненужными анализами, не актуализируются и недоступны для большинства населения. Наши чекап-пакеты не содержат в себе ничего лишнего, только максимально необходимые важные пункты.
+              </p>
+              <div className="flex items-center justify-end">
+                <Button
+                  className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
+                  onClick={() => {
+                    setCurrentQuestionId('1');
+                  }}
+                >
+                  Начать
+                </Button>
+              </div>
             </div>
           )
         )}

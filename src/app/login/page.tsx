@@ -39,10 +39,12 @@ export default function Home() {
             </div>
             <div className="relative z-20 mt-auto">
               <blockquote className="space-y-2">
-                <p className="text-lg text-white">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s,
+                <p className="text-sm text-white">
+                  В CheckApp мы верим, что здоровье начинается с превентивного подхода. Наша миссия — предоставить
+                  каждому клиенту доступ к рекомендациям, основанным на доказательной медицине, сохраняя его/ее свободу
+                  выбора. Вы решаете, где и как заботиться о своем здоровье, а мы помогаем сделать этот путь максимально
+                  доступным и эффективным.
                 </p>
-                <footer className="text-sm text-white">Цитата основателей</footer>
               </blockquote>
             </div>
           </div>

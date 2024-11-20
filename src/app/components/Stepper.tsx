@@ -126,14 +126,14 @@ const Stepper = () => {
           CheckApp - персонализированные чекапы от консилиумов врачей
         </h1>
       </div>
-      <div className="stepper-container flex flex-col items-start justify-center gap-y-8 min-h-dvh">
+      <div className="stepper-container hidden lg:flex flex-col items-start justify-center gap-y-8 min-h-dvh">
         <h1
           ref={headingRef}
           className="text-4xl text-[#1C1F25] font-semibold ml-28"
         >
           Как работает CheckApp?
         </h1>
-        <div className="container mx-auto hidden lg:flex items-center gap-x-16">
+        <div className="container mx-auto flex items-center gap-x-16">
           <div className="flex flex-col items-end gap-y-16">
             {stepList.map((step) => (
               <div
@@ -173,6 +173,58 @@ const Stepper = () => {
                 {step.content}
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+      <div className="flex lg:hidden flex-col mt-24 px-4">
+        <div data-aos="fade-left" className="flex flex-col items-center">
+          <h1 className="text-[#1C1F25] uppercase text-2xl font-bold text-left w-full">
+            Консилиум
+          </h1>
+          <div className="flex flex-col items-center mt-4 gap-y-4">
+            <p className="text-[#4B5162] text-base text-left">
+              Мы объединили лучших <span className="font-semibold">врачей доказательной медицины</span> в формате
+              консилиума, чтобы предложить вам персонализированный план обследования для эффективной оценки вашего
+              здоровья.
+            </p>
+            <Image src={Stepper1} alt="phone-img" className="-z-10"/>
+          </div>
+        </div>
+        <div data-aos="fade-right" className="flex flex-col items-center mt-12">
+          <h1 className="text-[#1C1F25] uppercase text-2xl font-bold text-left w-full">
+            Анкетирование
+          </h1>
+          <div className="flex flex-col items-center mt-4 gap-y-4">
+            <p className="text-[#4B5162] text-base text-left">
+              Для этого наши врачи разработали удобные онлайн-анкеты по различным направлениям с персонализирующим
+              алгоритмом, которые представляют собой подробнейший сбор анамнеза <span className="font-semibold">сразу от нескольких специалистов.</span>
+            </p>
+            <Image src={Stepper2} alt="call-img"/>
+          </div>
+        </div>
+        <div data-aos="fade-left" className="flex flex-col items-center mt-12">
+          <h1 className="text-[#1C1F25] uppercase text-2xl font-bold text-left w-full">
+            Персонализированный чекап
+          </h1>
+          <div className="flex flex-col items-center mt-4 gap-y-4">
+            <p className="text-[#4B5162] text-base text-left">
+              После прохождения анкетирования вы сразу получаете <span className="font-semibold">персонализированный план обследования</span> -
+              от списка анализов до профильных специалистов, рекомендованных к прохождению именно для вас.
+            </p>
+            <Image src={Stepper3} alt="phone-img"/>
+          </div>
+        </div>
+        <div data-aos="fade-right" className="flex flex-col items-center mt-12">
+          <h1 className="text-[#1C1F25] uppercase text-2xl font-bold text-left w-full">
+            Прозрачность
+          </h1>
+          <div className="flex flex-col items-center mt-4 gap-y-4">
+            <p className="text-[#4B5162] text-base text-left">
+              Выбор лабораторий и врачей остается за вами - вы можете пройти обследования там,
+              где вам удобно и комфортно. Это отражает наш <span className="font-semibold">открытый и непредвзятый подход,</span> основанный
+              на заботе о вашем здоровье.
+            </p>
+            <Image src={Stepper4} alt="call-img"/>
           </div>
         </div>
       </div>
