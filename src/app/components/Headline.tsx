@@ -5,6 +5,7 @@ import Carousel2 from "@/public/carousel/2.svg";
 import Carousel3 from "@/public/carousel/3.svg";
 import {Carousel, CarouselContent, CarouselItem} from "@/components/ui/carousel";
 import Link from "next/link";
+import Autoplay from "embla-carousel-autoplay"
 
 const Headline = () => {
 
@@ -31,7 +32,17 @@ const Headline = () => {
 
   return (
     <section className="lg:container lg:mx-auto lg:pb-8 py-0">
-      <Carousel className="w-full lg:rounded-3xl overflow-hidden">
+      <Carousel
+        className="w-full lg:rounded-3xl overflow-hidden"
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
+        opts={{
+          loop: true
+        }}
+      >
         <CarouselContent>
           {CarouselList.map((item, index) => (
             <CarouselItem key={index} className="relative">

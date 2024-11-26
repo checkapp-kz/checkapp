@@ -12,7 +12,8 @@ const CheckCards = () => {
     {
       img: Card1,
       title: 'Спортивный',
-      link: '/sportTest',
+      link: '#',
+      //link: '/sportTest',
       price: '5 990 ₸'
     },
     {
@@ -38,7 +39,7 @@ const CheckCards = () => {
         className="w-full"
         plugins={[
           Autoplay({
-            delay: 2000
+            delay: 200
           }),
         ]}
         opts={{
