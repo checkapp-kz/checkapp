@@ -250,6 +250,7 @@ export default function SportTest() {
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
                   onClick={() => {
                     setCurrentQuestionId('1');
+                    sendRequest();
                   }}
                 >
                   Начать
