@@ -124,7 +124,7 @@ export default function SportTest() {
     urlencoded.append("LANG", "ru");
     urlencoded.append("NONCE", "");
     urlencoded.append("P_SIGN", "");
-    urlencoded.append("CLIENT_IP", "192.168.0.103");
+    urlencoded.append("CLIENT_IP", "194.187.139.14");
     urlencoded.append("M_INFO", "ewoJImJyb3dzZXJTY3JlZW5IZWlnaHQiOiIxOTIwIiwKCSJicm93c2VyU2NyZWVuV2lkdGgiOiIxMDgwIiwKCSJtb2JpbGVQaG9uZSI6ewoJCSJjYyI6ICI3IiAsCgkJInN1YnNjcmliZXIiOiI3NDc1NTU4ODg4IgoJfQp9");
 
     const requestOptions:RequestInit = {

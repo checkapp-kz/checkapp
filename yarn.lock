@@ -676,6 +676,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-navigation-menu@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@radix-ui/react-navigation-menu@npm:1.2.1"
+  dependencies:
+    "@radix-ui/primitive": 1.1.0
+    "@radix-ui/react-collection": 1.1.0
+    "@radix-ui/react-compose-refs": 1.1.0
+    "@radix-ui/react-context": 1.1.1
+    "@radix-ui/react-direction": 1.1.0
+    "@radix-ui/react-dismissable-layer": 1.1.1
+    "@radix-ui/react-id": 1.1.0
+    "@radix-ui/react-presence": 1.1.1
+    "@radix-ui/react-primitive": 2.0.0
+    "@radix-ui/react-use-callback-ref": 1.1.0
+    "@radix-ui/react-use-controllable-state": 1.1.0
+    "@radix-ui/react-use-layout-effect": 1.1.0
+    "@radix-ui/react-use-previous": 1.1.0
+    "@radix-ui/react-visually-hidden": 1.1.0
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 134fbcbe27b136b984394fb5a76f74467f937a8d891c28c4e1b74ecad74c6b7035d42ae0b4d8f2a40b18385812da7d30a9336484c585e662a0316c6ef5259cbe
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-popper@npm:1.2.0":
   version: 1.2.0
   resolution: "@radix-ui/react-popper@npm:1.2.0"
@@ -857,6 +889,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-separator@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@radix-ui/react-separator@npm:1.1.0"
+  dependencies:
+    "@radix-ui/react-primitive": 2.0.0
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: a7c3445603a45075dcf3559eb8f2f2e8545afeae253e67d0bde736c66b293c601974a1d6f9d7be1802d83869933dc120a7389ab98189ceb9a24659737dde0162
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-slot@npm:1.1.0, @radix-ui/react-slot@npm:^1.1.0":
   version: 1.1.0
   resolution: "@radix-ui/react-slot@npm:1.1.0"
@@ -899,6 +950,36 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 94d54c1432b17237e87323a33f79c6290093d33dc67296d7a4dd4c73ee10d5f5de701cc025a47607b626713fd20c919a8ed9ba23b158f91db6086580218991c9
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-tooltip@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@radix-ui/react-tooltip@npm:1.1.4"
+  dependencies:
+    "@radix-ui/primitive": 1.1.0
+    "@radix-ui/react-compose-refs": 1.1.0
+    "@radix-ui/react-context": 1.1.1
+    "@radix-ui/react-dismissable-layer": 1.1.1
+    "@radix-ui/react-id": 1.1.0
+    "@radix-ui/react-popper": 1.2.0
+    "@radix-ui/react-portal": 1.1.2
+    "@radix-ui/react-presence": 1.1.1
+    "@radix-ui/react-primitive": 2.0.0
+    "@radix-ui/react-slot": 1.1.0
+    "@radix-ui/react-use-controllable-state": 1.1.0
+    "@radix-ui/react-visually-hidden": 1.1.0
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 4aaba9ee0a5a159f164c3ebf0b5387879504466d07c01912dd36652887898e7560dcb600c8670d32087041b17aef00106584a73f6e7932955f2d94e5c2a96047
   languageName: node
   linkType: hard
 
@@ -1946,10 +2027,13 @@ __metadata:
     "@radix-ui/react-hover-card": ^1.1.2
     "@radix-ui/react-icons": ^1.3.0
     "@radix-ui/react-label": ^2.1.0
+    "@radix-ui/react-navigation-menu": ^1.2.1
     "@radix-ui/react-radio-group": ^1.2.1
     "@radix-ui/react-select": ^2.1.2
+    "@radix-ui/react-separator": ^1.1.0
     "@radix-ui/react-slot": ^1.1.0
     "@radix-ui/react-toast": ^1.2.2
+    "@radix-ui/react-tooltip": ^1.1.4
     "@react-email/components": ^0.0.25
     "@react-email/render": ^1.0.1
     "@types/aos": ^3.0.7
@@ -1957,7 +2041,7 @@ __metadata:
     "@types/react": ^18
     "@types/react-dom": ^18
     aos: ^2.3.4
-    class-variance-authority: ^0.7.0
+    class-variance-authority: ^0.7.1
     clsx: ^2.1.1
     cn: ^0.1.1
     cookies-next: ^4.3.0
@@ -1969,7 +2053,7 @@ __metadata:
     file-loader: ^6.2.0
     gsap: ^3.12.5
     gsap-trial: ^3.12.5
-    lucide-react: ^0.451.0
+    lucide-react: ^0.465.0
     mongodb: ^6.9.0
     mongoose: ^8.7.1
     next: 14.2.10
@@ -2056,12 +2140,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-variance-authority@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "class-variance-authority@npm:0.7.0"
+"class-variance-authority@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "class-variance-authority@npm:0.7.1"
   dependencies:
-    clsx: 2.0.0
-  checksum: e7fd1fab433ef06f52a1b7b241b70b4a185864deef199d3b0a2c3412f1cc179517288264c383f3b971a00d76811625fc8f7ffe709e6170219e88cd7368f08a20
+    clsx: ^2.1.1
+  checksum: e05ba26ef9ec38f7c675047ce366b067d60af6c954dba08f7802af19a9460a534ae752d8fe1294fff99d0fa94a669b16ccebd87e8a20f637c0736cf2751dd2c5
   languageName: node
   linkType: hard
 
@@ -2083,13 +2167,6 @@ __metadata:
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
   checksum: 0c16bf660dadb90610553c1d8946a7fdfb81d624adea073b8440b7d795d5b5b08beb3c950c6a2cf16279365a3265158a236876d92bce16423c485c322d7dfaf8
-  languageName: node
-  linkType: hard
-
-"clsx@npm:2.0.0":
-  version: 2.0.0
-  resolution: "clsx@npm:2.0.0"
-  checksum: a2cfb2351b254611acf92faa0daf15220f4cd648bdf96ce369d729813b85336993871a4bf6978ddea2b81b5a130478339c20d9d0b5c6fc287e5147f0c059276e
   languageName: node
   linkType: hard
 
@@ -4217,12 +4294,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lucide-react@npm:^0.451.0":
-  version: 0.451.0
-  resolution: "lucide-react@npm:0.451.0"
+"lucide-react@npm:^0.465.0":
+  version: 0.465.0
+  resolution: "lucide-react@npm:0.465.0"
   peerDependencies:
     react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
-  checksum: 889b762014af19e7459d85697bf6b6223bacdbeb1ce229b1fba5ef6825e4a481494169560c2f3d86cd9d3ed6eb5d9ccf6ff2c63c0dd9f7e751e182a4caff766f
+  checksum: 2736a1242770ead3783acdee4cd7b8cead1d5e5fe7e0c53057337c26f5d5bc6c4524347f9c73cb21641d1a12c3b358f3d8bd2f50378af77ff1207260f4b08578
   languageName: node
   linkType: hard
 

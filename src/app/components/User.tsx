@@ -1,7 +1,7 @@
 "use client"
 
 import {useCallback, useEffect, useState} from "react";
-import {List, User} from "lucide-react";
+import {ChartLine, List, User} from "lucide-react";
 import {deleteCookie, getCookie, setCookie} from "cookies-next";
 import Link from "next/link";
 import {Profile} from "@/app/types/profile";
@@ -50,6 +50,10 @@ const UserComponent = () => {
     router.refresh();
   }, [router]);
 
+  const goToAnalyse = useCallback(() => {
+    router.push('/analyse');
+  }, [router]);
+
   useEffect(() => {
     setToken(getCookie('user-token') as string | undefined); // Обновляем токен при рендере
     if (token) {
@@ -83,11 +87,15 @@ const UserComponent = () => {
               <p>Добро пожаловать</p>
               <p className="font-medium text-[#1D7CBC]">{me?.name || "Неизвестный пользователь"}!</p>
             </div>
-            <Button variant="outline" className="gap-x-2">
+            <Button variant="ghost" className="gap-x-2 justify-start border-b rounded-none">
               <List className="w-4 h-4" />
               Мои чекапы
             </Button>
-            <Button variant="outline" className="gap-x-2" onClick={exit}>
+            <Button variant="ghost" className="gap-x-2 justify-start border-b rounded-none" onClick={goToAnalyse}>
+              <ChartLine className="w-4 h-4" />
+              Мои анализы
+            </Button>
+            <Button variant="ghost" className="gap-x-2 justify-start border-b rounded-none" onClick={exit}>
               <ExitIcon />
               Выйти
             </Button>
