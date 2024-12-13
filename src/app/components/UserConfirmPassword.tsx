@@ -8,17 +8,20 @@ import {Input} from "@/components/ui/input";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import {PasswordInput} from "@/components/ui/password-input";
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 import {toast} from "@/hooks/use-toast";
 import {setCookie} from "cookies-next";
 import Link from "next/link";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
+export function UserConfirmPassword({ className, ...props }: UserAuthFormProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [mail, setMail] = useState('');
+  const code = searchParams.get('code');
+  const id = searchParams.get('id');
+
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -27,38 +30,33 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://checkapp-back.vercel.app/auth/login', {
+    const response = await fetch('https://checkapp-back.vercel.app/auth/reset-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: mail,
-        password: password
+        userId: id,
+        code: code,
+        newPassword: password
       })
     }).finally(() => {
       setIsLoading(false);
     });
 
     if (response.ok) {
-      const data = await response.json();
-      setCookie('user-token', data.access_token);
-      router.push('/');
+      toast({
+        variant: 'success',
+        title: 'Поздравляем!',
+        description: 'Пароль успешно был восстановлен!'
+      });
+      router.push('/login');
     } else {
-      const errorData = await response.json();
-      if (errorData.message) {
-        toast({
-          variant: 'destructive',
-          title: errorData.message,
-          description: 'Введите корректные данные.'
-        });
-      } else {
-        toast({
-          variant: 'destructive',
-          title: 'Упс! Что-то пошло не так...',
-          description: 'Попробуйте еще раз'
-        })
-      }
+      toast({
+        variant: 'destructive',
+        title: 'Упс! Что-то пошло не так...',
+        description: 'Попробуйте еще раз'
+      })
     }
   }
 
@@ -67,18 +65,6 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <Input
-              id="email"
-              value={mail}
-              onChange={(event) => setMail(event.target.value)}
-              placeholder="email@example.com"
-              type="email"
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect="off"
-              disabled={isLoading}
-              className="border-[#4B5162]"
-            />
             <PasswordInput
               id="password"
               value={password}
@@ -90,16 +76,11 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
               className="border-[#4B5162]"
             />
           </div>
-          <div className="flex justify-center text-sm my-2">
-            <Link href="/reset-password" className="hover:underline">
-              Забыли пароль ?
-            </Link>
-          </div>
-          <Button disabled={isLoading} className="bg-[#1D7CBC] hover:bg-[#1D7CBC]">
+          <Button disabled={isLoading} className="bg-[#1D7CBC] hover:bg-[#1D7CBC] mt-4">
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Войти
+            Сохранить
           </Button>
         </div>
       </form>

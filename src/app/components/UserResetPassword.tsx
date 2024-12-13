@@ -15,7 +15,7 @@ import Link from "next/link";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
+export function UserResetPassword({ className, ...props }: UserAuthFormProps) {
   const router = useRouter();
 
   const [mail, setMail] = useState('');
@@ -27,38 +27,30 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://checkapp-back.vercel.app/auth/login', {
+    const response = await fetch('https://checkapp-back.vercel.app/auth/forgot-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         email: mail,
-        password: password
       })
     }).finally(() => {
       setIsLoading(false);
     });
 
     if (response.ok) {
-      const data = await response.json();
-      setCookie('user-token', data.access_token);
-      router.push('/');
+      toast({
+        variant: 'success',
+        title: 'Письмо отправлено!',
+        description: 'На вашу почту было отправлено письмо для восстановление пароля.'
+      });
     } else {
-      const errorData = await response.json();
-      if (errorData.message) {
-        toast({
-          variant: 'destructive',
-          title: errorData.message,
-          description: 'Введите корректные данные.'
-        });
-      } else {
-        toast({
-          variant: 'destructive',
-          title: 'Упс! Что-то пошло не так...',
-          description: 'Попробуйте еще раз'
-        })
-      }
+      toast({
+        variant: 'destructive',
+        title: 'Упс! Что-то пошло не так...',
+        description: 'Попробуйте еще раз'
+      })
     }
   }
 
@@ -79,27 +71,12 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
               className="border-[#4B5162]"
             />
-            <PasswordInput
-              id="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="Пароль"
-              type="password"
-              autoComplete="password"
-              disabled={isLoading}
-              className="border-[#4B5162]"
-            />
           </div>
-          <div className="flex justify-center text-sm my-2">
-            <Link href="/reset-password" className="hover:underline">
-              Забыли пароль ?
-            </Link>
-          </div>
-          <Button disabled={isLoading} className="bg-[#1D7CBC] hover:bg-[#1D7CBC]">
+          <Button disabled={isLoading} className="bg-[#1D7CBC] hover:bg-[#1D7CBC] mt-4">
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Войти
+            Восстановить
           </Button>
         </div>
       </form>

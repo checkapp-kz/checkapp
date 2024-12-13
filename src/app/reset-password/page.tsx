@@ -4,11 +4,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Link from "next/link";
-import {UserAuthForm} from "@/app/components/UserAuthForm";
 import {buttonVariants} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
 import Image from "next/image";
 import Logo from "@/public/logo.svg";
+import {UserResetPassword} from "@/app/components/UserResetPassword";
 
 export default function Home() {
 
@@ -40,7 +40,10 @@ export default function Home() {
             <div className="relative z-20 mt-auto">
               <blockquote className="space-y-2">
                 <p className="text-sm text-white">
-                  В CheckApp мы верим, что здоровье начинается с превентивного подхода. Наша миссия — предоставить каждому клиенту доступ к рекомендациям, основанным на доказательной медицине, сохраняя его/ее свободу выбора. Вы решаете, где и как заботиться о своем здоровье, а мы помогаем сделать этот путь максимально доступным и эффективным.
+                  В CheckApp мы верим, что здоровье начинается с превентивного подхода. Наша миссия — предоставить
+                  каждому клиенту доступ к рекомендациям, основанным на доказательной медицине, сохраняя его/ее свободу
+                  выбора. Вы решаете, где и как заботиться о своем здоровье, а мы помогаем сделать этот путь максимально
+                  доступным и эффективным.
                 </p>
               </blockquote>
             </div>
@@ -49,32 +52,13 @@ export default function Home() {
             <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
               <div className="flex flex-col space-y-2 text-center">
                 <h1 className="text-2xl font-semibold tracking-tight">
-                  Создать аккаунт
+                  Забыли пароль ?
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Введите свою почту для создания аккаунта
+                  Введите свою почту для восстановление пароля
                 </p>
               </div>
-              <UserAuthForm />
-              <p className="px-8 text-center text-sm text-muted-foreground">
-               Нажимая продолжить, вы соглашаетесь с нашими{" "}
-                <Link
-                  href="https://checkapp.kz/public-offer.pdf"
-                  target="_blank"
-                  className="underline underline-offset-4 hover:text-primary"
-                >
-                  Условиями использования
-                </Link>{" "}
-                и{" "}
-                <Link
-                  href="https://checkapp.kz/politic-use-data.pdf"
-                  target="_blank"
-                  className="underline underline-offset-4 hover:text-primary"
-                >
-                  Политикой конфиденциальности
-                </Link>
-                .
-              </p>
+              <UserResetPassword />
             </div>
           </div>
         </div>

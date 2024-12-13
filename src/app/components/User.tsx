@@ -22,7 +22,7 @@ const UserComponent = () => {
     if (!token) return; // Проверяем наличие токена
 
     try {
-      const response = await fetch('https://check-app-admin.vercel.app/api/me', {
+      const response = await fetch('https://checkapp-back.vercel.app/users/me', {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const UserComponent = () => {
 
   return (
     isLoading ? (
-      <Skeleton className="w-16 h-8" />
+      <Skeleton className="w-8 h-8 rounded-full" />
     ) : (
       !token ? (
         <Link
