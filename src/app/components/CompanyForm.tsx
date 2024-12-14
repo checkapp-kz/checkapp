@@ -12,7 +12,7 @@ const CompanyForm = () => {
 
   const sendMail = useCallback(async () => {
     setIsLoading(true);
-    const response = await fetch('http://localhost:3000/api/partner', {
+    const response = await fetch('https://checkapp-back.vercel.app/partner/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ const CompanyForm = () => {
       body: JSON.stringify({
         name: name,
         mail: mail,
-        text: message
+        message: message
       })
     }).finally(() => {
       setIsLoading(false)
@@ -28,7 +28,9 @@ const CompanyForm = () => {
       setMail('');
       setMessage('');
       toast({
-        description: "Письмо успешно отправлено"
+        variant: 'success',
+        title: 'Заявка успешно отправлена!',
+        description: 'Мы свяжемся с вами в ближайшее время для обсуждение партнерства!'
       });
     });
 
