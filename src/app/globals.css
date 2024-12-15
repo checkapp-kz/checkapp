@@ -93,3 +93,9 @@ body {
 html {
       scroll-behavior: smooth;
 }
+
+@media print {
+      .new-page {
+            page-break-before: always;
+      }
+}
