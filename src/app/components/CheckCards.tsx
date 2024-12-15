@@ -18,8 +18,7 @@ const CheckCards = () => {
     {
       img: Card2,
       title: 'Женский',
-      // link: '/womanTest'
-      link: '#',
+      link: '/womanTest',
       price: '4 990 ₸'
     },
     {
