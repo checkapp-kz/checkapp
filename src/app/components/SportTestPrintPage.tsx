@@ -558,30 +558,33 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
           </div>
         </div>
         <div className="new-page flex flex-col items-center mt-10">
-          <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Для вашей информации:</h4>
-          <p className="mt-6">
+          <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Что дальше?</h4>
+          <p className="mt-4">
             Выбор лабораторий, медицинских центров и врачей всегда остается за вами - вы можете пройти обследование там,
-            где вам удобно и комфортно. Но всегда можно воспользоваться специальными предложениями и скидками от
-            партнеров CheckApp, информация о которых размещена на нашем сайте: <a
-            href="www.checkapp.kz/partners" className="text-[#1D7CBC]">www.checkapp.kz/partners</a>
+            где вам удобно и комфортно.
           </p>
-          <p className="mt-6">
-            Если у вас возникают трудности при выборе специалиста для прохождения консультации, вы всегда можете пройти
-            прием непосредственно у врачей из нашего консилиума. Вся необходимая информация о них расположена на нашем
-            сайте:
-            <a href='www.checkapp.kz/doctors' className="text-[#1D7CBC]">www.checkapp.kz/doctors</a>
+          <p className="mt-4">
+            Но всегда можно воспользоваться специальными предложениями и скидками от партнеров CheckApp, информация о
+            которых размещена тут и на нашем сайте:
+            <a href='https://checkapp.kz/partners' className="text-[#1D7CBC]">www.checkapp.kz/partners</a>
           </p>
-          <h4 className="text-[#1D7CBC] text-2xl font-bold mt-24">Специальное предложение от партнера CheckApp!</h4>
 
-          <p className="mt-4 text-[#1D7CBC]">У вас есть возможность получить скидку от 20% до 30% на ряд лабораторных
-            исследований в <b>сети Invitro</b> по всему Казахстану, используя единоразовый промокод «CheckAppMe».
+          <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full mt-10">Онлайн-консультация врача</h4>
+          <p className="mt-4">
+            Если у вас возникают трудности при выборе специалиста для прохождения консультации, вы всегда можете пройти
+            прием непосредственно у врачей доказательной медицины из нашего консилиума. Вся необходимая информация о них
+            расположена на нашем сайте:
+            <a href="https://checkapp.kz/doctors">www.checkapp.kz/doctors</a>
           </p>
-          <p className="mt-4 text-[#1D7CBC]">Промокод действителен в течение <b>14 календарных дней</b> после даты
-            прохождения анкетирования, при предъявлении вашего персонального плана обследования (данного документа) и
-            документа, удостоверяющего личность.
+
+          <h4 className="text-[#1D7CBC] text-2xl font-bold mt-24">Специальное предложение от партнера CheckApp!</h4>
+          <p className="mt-4 text-[#1D7CBC]">У вас есть возможность получить скидку <span className="text-lg font-bold">от 20% до 30%</span> на
+            ряд <span className="text-lg font-bold">INVITRO</span> лабораторных исследований в сети по всему Казахстану
+            при предъявлении вашего персонального плана обследования (данного документа) и документа, удостоверяющего
+            личность.
           </p>
-          <p className="mt-4 text-[#1D7CBC]">
-            Результаты анализов вы получите на указанный в лаборатории ваш WhatsApp номер.
+          <p className="mt-4 text-[#1D7CBC] w-full">
+            Результаты анализов вы сможете получить напрямую от лаборатории.
           </p>
           <div className="mt-12 flex justify-center">
             <h4 className="text-[#1D7CBC] text-2xl font-bold">Будьте здоровы!</h4>

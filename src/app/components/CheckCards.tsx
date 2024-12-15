@@ -24,8 +24,7 @@ const CheckCards = () => {
     {
       img: Card3,
       title: 'Мужской',
-      // link: '/manTest'
-      link: '#',
+      link: '/manTest',
       price: '4 990 ₸'
     }
   ];
