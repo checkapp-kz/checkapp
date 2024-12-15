@@ -202,15 +202,18 @@ export default function SportTest() {
               <>
                 <RadioGroup className="mt-8" value={selectedVariant} onValueChange={setSelectedVariant}>
                   {question.variants && question.variants.map((variant) => (
-                    <div key={variant.value} className="flex items-center space-x-2">
-                      <RadioGroupItem value={variant.value} id={variant.value} />
-                      <Label htmlFor={variant.value} className="text-md text-[#4B5162]">{variant.label}</Label>
+                    <div key={variant.value} className="flex flex-col gap-y-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value={variant.value} id={variant.value}/>
+                        <Label htmlFor={variant.value} className="text-md text-[#4B5162]">{variant.label}</Label>
+                      </div>
                       {variant.form && (
                         <Input
                           type="text"
                           value={otherAnswer}
                           onChange={(e) => setOtherAnswer(e.target.value)}
                           placeholder="Введите ваш ответ"
+                          className="ml-6 w-2/4"
                         />
                       )}
                     </div>
@@ -270,7 +273,7 @@ export default function SportTest() {
                 <Button
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
                   onClick={() => {
-                    console.log(answers)
+                    console.log(answers);
                     reactToPrintFn();
                   }}
                 >

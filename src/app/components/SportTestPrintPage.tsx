@@ -274,268 +274,290 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
             )}
           </div>
         </div>
-        <div className="flex flex-col items-center mt-10">
-          <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Специалисты, рекомендованные к
-            посещению:</h4>
-          <div className="flex flex-col gap-y-1 w-full border">
-            {(answer.length < 14) && answer[1].answer === 'd' && (
-              <div className="border-b">
-                <p className="pl-1">консультация кардиолога</p>
-              </div>
-            )}
-            {(answer.length > 13) && answer[2].answer === 'd' && (
-              <div className="border-b">
-                <p className="pl-1">консультация кардиолога</p>
-              </div>
-            )}
-            {(bmi() > 30) || (answer.length > 13 && (answer[10].answer === 'e' || answer[10].answer === 'b')) || (answer.length < 14 && (answer[9].answer === 'e' || answer[9].answer === 'b')) && (
-              <div className="border-b">
-                <p className="pl-1">консультация эндокринолога</p>
-              </div>
-            )}
-            {answer[1].id === '1b' && answer[1].answer === 'a' && (
-              <div className="border-b">
+        <div className="new-page flex flex-col items-center">
+          <div className="flex flex-col w-full mt-10">
+            <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Специалисты, рекомендованные к
+              посещению:</h4>
+            <div className="flex flex-col gap-y-1 w-full border">
+              {
+                ((answer.length < 14 && answer[1].answer === 'd') || answer[9].answer === 'd') && (
+                  <div className="border-b">
+                    <p className="pl-1">консультация кардиолога</p>
+                  </div>
+                )
+              }
+              {
+                ((answer.length > 13 && answer[2].answer === 'd') || (answer[9].answer === 'd')) && (
+                  <div className="border-b">
+                    <p className="pl-1">консультация кардиолога</p>
+                  </div>
+                )
+              }
+              {
+                (bmi() > 30 ||
+                  (answer.length > 13 && (answer[9].answer === 'e' || answer[9].answer === 'b')) ||
+                  (answer.length < 14 && (answer[8].answer === 'e' || answer[8].answer === 'b'))) && (
+                  <div className="border-b">
+                    <p className="pl-1">консультация эндокринолога</p>
+                  </div>
+                )
+              }
+              {answer[1].id === '1b' && answer[1].answer === 'a' && (
+                <div className="border-b">
                 <p className="pl-1">консультация гинеколога</p>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="flex flex-col items-center mt-24">
-          <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Функциональная диагностика к прохождению:</h4>
-          <div className="flex flex-col gap-y-1 w-full border">
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-2/4 pl-1">
-                <p>Наименование</p>
-              </div>
-              <div className="flex flex-col w-full border-l pl-1">
-                <p>Краткое описание</p>
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-2/4 pl-1">
-                <p>ЭКГ (электрокардиограмма)</p>
-              </div>
-              <div className="flex flex-col w-full border-l pl-1">
-                <p>- это метод исследования, который позволяет оценить электрическую активность сердца и выявить
-                  различные нарушения в его работе. </p>
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-2/4 pl-1">
-                <p>УЗИ сердца</p>
-              </div>
-              <div className="flex flex-col w-full border-l pl-1">
-                <p>- это метод ультразвукового исследования, который используется для оценки состояния сердца, его структуры и функции. Этот метод позволяет получить изображение сердца, кровеносных сосудов и их внутренних структур с помощью ультразвуковых волн.</p>
-              </div>
-            </div>
-            {(answer.length < 14) && answer[1].answer === 'd' && (
-              <div className="flex items-baseline border-b">
-                <div className="flex flex-col w-2/4 pl-1">
-                  <p>Денситометрия</p>
                 </div>
-                <div className="flex flex-col w-full border-l pl-1">
-                  <p>- это метод диагностики, предназначенный для измерения плотности костной ткани с целью оценки риска развития остеопороза и других заболеваний, связанных с потерей костной массы.</p>
-                </div>
-              </div>
-            )}
-            {(answer.length > 13) && answer[2].answer === 'd' && (
-              <div className="flex items-baseline border-b">
-                <div className="flex flex-col w-2/4 pl-1">
-                  <p>Денситометрия</p>
-                </div>
-                <div className="flex flex-col w-full border-l pl-1">
-                  <p>- это метод диагностики, предназначенный для измерения плотности костной ткани с целью оценки риска развития остеопороза и других заболеваний, связанных с потерей костной массы.</p>
-                </div>
-              </div>
-            )}
-            {((answer.length < 14) && answer[5].answer === 'a') || ((answer.length < 14) && answer[6].answer === 'f') && (
-              <div className="flex items-baseline border-b">
-                <div className="flex flex-col w-2/4 pl-1">
-                  <p>суточное (холтеровское) мониторирование с физической нагрузкой</p>
-                </div>
-                <div className="flex flex-col w-full border-l pl-1">
-                  <p>- Суточное (холтеровское) мониторирование - метод исследования, который позволяет производить непрерывную регистрацию динамики сердца на ЭКГ с помощью портативного устройства (холтера), отслеживать изменения в работе сердца и контролировать артериальное давление пациента в течение всего дня в условиях его активности.</p>
-                </div>
-              </div>
-            )}
-            {((answer.length > 13) && answer[6].answer === 'a') || ((answer.length > 13) && answer[7].answer === 'f') && (
-              <div className="flex items-baseline border-b">
-                <div className="flex flex-col w-2/4 pl-1">
-                  <p>суточное (холтеровское) мониторирование с физической нагрузкой</p>
-                </div>
-                <div className="flex flex-col w-full border-l pl-1">
-                  <p>- Суточное (холтеровское) мониторирование - метод исследования, который позволяет производить непрерывную регистрацию динамики сердца на ЭКГ с помощью портативного устройства (холтера), отслеживать изменения в работе сердца и контролировать артериальное давление пациента в течение всего дня в условиях его активности.</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="flex flex-col items-center mt-24">
-          <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Дополнительная информация для врача:</h4>
-          <div className="flex flex-col gap-y-1 w-full border">
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1">
-                <p>BMI/ИМТ</p>
-              </div>
-              <div className="flex w-full border-l pl-1">
-                <p>{bmi()}</p> <p className="mx-2">|</p>
-                {bmi() < 16 && (
-                  <p>Выраженный дефицит массы тела</p>
-                )}
-                {(bmi() > 16 && bmi() < 19) && (
-                  <p>Недостаточная масса тела</p>
-                )}
-                {(bmi() >= 19 && bmi() < 25) && (
-                  <p>Норма</p>
-                )}
-                {(bmi() >= 25 && bmi() < 30) && (
-                  <p>Предожирение</p>
-                )}
-                {(bmi() >= 30 && bmi() < 35) && (
-                  <p>Ожирение 1 степени</p>
-                )}
-                {(bmi() >= 35 && bmi() < 40) && (
-                  <p>Ожирение 2 степени</p>
-                )}
-                {(bmi() >= 40) && (
-                  <p>Ожирение 3 степени</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1">
-                <p>Рост/Вес</p>
-              </div>
-              <div className="flex w-full border-l pl-1">
-                {answer.length < 14 && (
-                  <p>{answer[2].answer.height} см / {answer[2].answer.weight} кг</p>
-                )}
-                {answer.length > 13 && (
-                  <p>{answer[3].answer.height} см / {answer[3].answer.weight} кг</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Какой вид тренировки вы выполняете чаще всего?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('4', answer[4].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('4', answer[3].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Какой у вас режим сна?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('5', answer[5].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('5', answer[4].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Испытываете ли вы один или несколько из нижеперечисленных симптомов при умеренной физической
-                  нагрузке?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('7', answer[7].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('7', answer[6].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Имелись ли у ваших ближайших родственников следующие клинические состояния?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('8', answer[8].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('8', answer[7].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Диагностировали ли вам следующие хронические заболевания?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('9', answer[9].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('9', answer[8].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Придерживаетесь ли вы одного из следующих видов коррекционных диет?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('10', answer[10].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('10', answer[9].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Количество основных приемов пищи?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('11', answer[11].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('11', answer[10].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Принимаете ли вы какие-либо БАДы* или витамины на постоянной основе?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('12', answer[12].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('12', answer[11].answer)}</p>
-                )}
-              </div>
-            </div>
-            <div className="flex items-baseline border-b">
-              <div className="flex flex-col w-3/4 pl-1 border-r">
-                <p>Как часто вы употребляете алкоголь?</p>
-              </div>
-              <div className="flex w-full pl-1">
-                {answer.length > 13 && (
-                  <p>{getAnswerByIdAndValue('13', answer[13].answer)}</p>
-                )}
-                {answer.length < 14 && (
-                  <p>{getAnswerByIdAndValue('13', answer[12].answer)}</p>
-                )}
-              </div>
+              )}
             </div>
           </div>
+          <div className="flex flex-col items-center mt-10">
+            <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Функциональная диагностика к
+              прохождению:</h4>
+            <div className="flex flex-col gap-y-1 w-full border">
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-2/4 pl-1">
+                  <p>Наименование</p>
+                </div>
+                <div className="flex flex-col w-full border-l pl-1">
+                  <p>Краткое описание</p>
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-2/4 pl-1">
+                  <p>ЭКГ (электрокардиограмма)</p>
+                </div>
+                <div className="flex flex-col w-full border-l pl-1">
+                  <p>- это метод исследования, который позволяет оценить электрическую активность сердца и выявить
+                    различные нарушения в его работе. </p>
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-2/4 pl-1">
+                  <p>УЗИ сердца</p>
+                </div>
+                <div className="flex flex-col w-full border-l pl-1">
+                  <p>- это метод ультразвукового исследования, который используется для оценки состояния сердца, его
+                    структуры и функции. Этот метод позволяет получить изображение сердца, кровеносных сосудов и их
+                    внутренних структур с помощью ультразвуковых волн.</p>
+                </div>
+              </div>
+              {(answer.length < 14) && answer[1].answer === 'd' && (
+                <div className="flex items-baseline border-b">
+                  <div className="flex flex-col w-2/4 pl-1">
+                    <p>Денситометрия</p>
+                  </div>
+                  <div className="flex flex-col w-full border-l pl-1">
+                    <p>- это метод диагностики, предназначенный для измерения плотности костной ткани с целью оценки
+                      риска развития остеопороза и других заболеваний, связанных с потерей костной массы.</p>
+                  </div>
+                </div>
+              )}
+              {(answer.length > 13) && answer[2].answer === 'd' && (
+                <div className="flex items-baseline border-b">
+                  <div className="flex flex-col w-2/4 pl-1">
+                    <p>Денситометрия</p>
+                  </div>
+                  <div className="flex flex-col w-full border-l pl-1">
+                    <p>- это метод диагностики, предназначенный для измерения плотности костной ткани с целью оценки
+                      риска развития остеопороза и других заболеваний, связанных с потерей костной массы.</p>
+                  </div>
+                </div>
+              )}
+              {((answer.length < 14) && answer[5].answer === 'a') || ((answer.length < 14) && answer[6].answer === 'f') && (
+                <div className="flex items-baseline border-b">
+                  <div className="flex flex-col w-2/4 pl-1">
+                    <p>суточное (холтеровское) мониторирование с физической нагрузкой</p>
+                  </div>
+                  <div className="flex flex-col w-full border-l pl-1">
+                    <p>- Суточное (холтеровское) мониторирование - метод исследования, который позволяет производить
+                      непрерывную регистрацию динамики сердца на ЭКГ с помощью портативного устройства (холтера),
+                      отслеживать изменения в работе сердца и контролировать артериальное давление пациента в течение
+                      всего дня в условиях его активности.</p>
+                  </div>
+                </div>
+              )}
+              {((answer.length > 13) && answer[6].answer === 'a') || ((answer.length > 13) && answer[7].answer === 'f') && (
+                <div className="flex items-baseline border-b">
+                  <div className="flex flex-col w-2/4 pl-1">
+                    <p>суточное (холтеровское) мониторирование с физической нагрузкой</p>
+                  </div>
+                  <div className="flex flex-col w-full border-l pl-1">
+                    <p>- Суточное (холтеровское) мониторирование - метод исследования, который позволяет производить
+                      непрерывную регистрацию динамики сердца на ЭКГ с помощью портативного устройства (холтера),
+                      отслеживать изменения в работе сердца и контролировать артериальное давление пациента в течение
+                      всего дня в условиях его активности.</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col items-center mt-10">
+            <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Дополнительная информация для
+              врача:</h4>
+            <div className="flex flex-col gap-y-1 w-full border">
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1">
+                  <p>BMI/ИМТ</p>
+                </div>
+                <div className="flex w-full border-l pl-1">
+                  <p>{bmi()}</p> <p className="mx-2">|</p>
+                  {bmi() < 16 && (
+                    <p>Выраженный дефицит массы тела</p>
+                  )}
+                  {(bmi() > 16 && bmi() < 19) && (
+                    <p>Недостаточная масса тела</p>
+                  )}
+                  {(bmi() >= 19 && bmi() < 25) && (
+                    <p>Норма</p>
+                  )}
+                  {(bmi() >= 25 && bmi() < 30) && (
+                    <p>Предожирение</p>
+                  )}
+                  {(bmi() >= 30 && bmi() < 35) && (
+                    <p>Ожирение 1 степени</p>
+                  )}
+                  {(bmi() >= 35 && bmi() < 40) && (
+                    <p>Ожирение 2 степени</p>
+                  )}
+                  {(bmi() >= 40) && (
+                    <p>Ожирение 3 степени</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1">
+                  <p>Рост/Вес</p>
+                </div>
+                <div className="flex w-full border-l pl-1">
+                  {answer.length < 14 && (
+                    <p>{answer[2].answer.height} см / {answer[2].answer.weight} кг</p>
+                  )}
+                  {answer.length > 13 && (
+                    <p>{answer[3].answer.height} см / {answer[3].answer.weight} кг</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Какой вид тренировки вы выполняете чаще всего?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('4', answer[4].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('4', answer[3].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Какой у вас режим сна?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('5', answer[5].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('5', answer[4].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Испытываете ли вы один или несколько из нижеперечисленных симптомов при умеренной физической
+                    нагрузке?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('7', answer[7].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('7', answer[6].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Имелись ли у ваших ближайших родственников следующие клинические состояния?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('8', answer[8].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('8', answer[7].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Диагностировали ли вам следующие хронические заболевания?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('9', answer[9].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('9', answer[8].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Придерживаетесь ли вы одного из следующих видов коррекционных диет?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('10', answer[10].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('10', answer[9].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Количество основных приемов пищи?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('11', answer[11].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('11', answer[10].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Принимаете ли вы какие-либо БАДы* или витамины на постоянной основе?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('12', answer[12].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('12', answer[11].answer)}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-baseline border-b">
+                <div className="flex flex-col w-3/4 pl-1 border-r">
+                  <p>Как часто вы употребляете алкоголь?</p>
+                </div>
+                <div className="flex w-full pl-1">
+                  {answer.length > 13 && (
+                    <p>{getAnswerByIdAndValue('13', answer[13].answer)}</p>
+                  )}
+                  {answer.length < 14 && (
+                    <p>{getAnswerByIdAndValue('13', answer[12].answer)}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="new-page flex flex-col items-center mt-24">
+        <div className="new-page flex flex-col items-center mt-10">
           <h4 className="text-lg font-medium text-[#1D7CBC] text-left w-full">Для вашей информации:</h4>
           <p className="mt-6">
             Выбор лабораторий, медицинских центров и врачей всегда остается за вами - вы можете пройти обследование там,
@@ -549,7 +571,7 @@ const SportTestPrintPage = forwardRef<HTMLDivElement, SportTestPrintPageProps>(
             сайте:
             <a href='www.checkapp.kz/doctors' className="text-[#1D7CBC]">www.checkapp.kz/doctors</a>
           </p>
-          <h4 className="text-[#1D7CBC] text-2xl font-bold mt-6">Специальное предложение от партнера CheckApp!</h4>
+          <h4 className="text-[#1D7CBC] text-2xl font-bold mt-24">Специальное предложение от партнера CheckApp!</h4>
 
           <p className="mt-4 text-[#1D7CBC]">У вас есть возможность получить скидку от 20% до 30% на ряд лабораторных
             исследований в <b>сети Invitro</b> по всему Казахстану, используя единоразовый промокод «CheckAppMe».
