@@ -7,11 +7,10 @@ import { toast } from "@/hooks/use-toast";
 import gsap from 'gsap';
 import { cn } from "@/lib/utils";
 
-const StyledButton = ({ className, ...props }) => (
+const StyledButton = ({ ...props }) => (
   <Button
     className={cn(
       "bg-white text-[#1D7CBC] hover:bg-white/90 rounded-lg h-14 text-lg font-medium transition-all hover:scale-[1.02] w-full",
-      className
     )}
     {...props}
   />
