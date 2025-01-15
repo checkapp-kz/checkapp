@@ -21,7 +21,7 @@ export default function ManTest() {
   const [otherAnswer, setOtherAnswer] = useState('');
 
   useEffect(() => {
-    if (currentQuestionId === '8') {
+    if (currentQuestionId === '13') {
       setQuestion(null);
     } else {
       const currentQuestion = Test.find((q) => q.id === currentQuestionId);
@@ -82,14 +82,6 @@ export default function ManTest() {
 
     setSelectedVariant(null);
     setOtherAnswer('');
-
-    if (variant !== 'a' && variant !== 'b') {
-      setCurrentQuestionId('7');
-    }
-
-    if (variant === 'a' || variant === 'b') {
-      setCurrentQuestionId('8');
-    }
   };
 
   const handleQuestionThree = () => {
@@ -230,8 +222,6 @@ export default function ManTest() {
                 onClick={() => {
                   if (currentQuestionId === '2') {
                     handleQuestionThree();
-                  } else if (currentQuestionId === '6') {
-                    handleNextCheckAge(answers[0].answer);
                   } else {
                     handleNext();
                   }
@@ -243,7 +233,7 @@ export default function ManTest() {
             </div>
           </>
         ) : (
-          currentQuestionId === '8' && (
+          currentQuestionId === '13' && (
             <div className="flex flex-col gap-y-2">
               <h4 className="font-medium text-xl text-[#4B5162]">
                 Дисклеймер
@@ -255,14 +245,14 @@ export default function ManTest() {
                 <Button
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
                   onClick={() => {
-                    setCurrentQuestionId('9')
+                    setCurrentQuestionId('14')
                   }}
                 >
                   Понятно
                 </Button>
               </div>
             </div>
-          ) || currentQuestionId === '9' && (
+          ) || currentQuestionId === '14' && (
             <div className="flex flex-col gap-y-4">
               <h4 className="font-medium text-xl text-[#4B5162]">
                 Финализированный персональный женский чекап-пакет
