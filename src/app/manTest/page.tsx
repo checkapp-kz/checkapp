@@ -8,11 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {useReactToPrint} from "react-to-print";
 import ManTestPrintPage from "@/app/components/ManTestPrintPage";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import { toast } from "@/hooks/use-toast";
 import { getCookie } from "cookies-next";
-import { log } from "console";
 
 export default function ManTest() {
   const [currentQuestionId, setCurrentQuestionId] = useState('0');
@@ -22,7 +19,6 @@ export default function ManTest() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [otherAnswer, setOtherAnswer] = useState('');
-  const [age, setAge] = useState<number>();
 
   useEffect(() => {
     if (currentQuestionId === '8') {
@@ -134,7 +130,8 @@ export default function ManTest() {
     try {
       const userId = getCookie('user-id');
       
-      const response = await fetch('https://checkapp-back.vercel.app/test/save', {
+      // Сохраняем тест
+      const saveResponse = await fetch('https://checkapp-back.vercel.app/test/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -146,18 +143,33 @@ export default function ManTest() {
         })
       });
 
-      if (response.ok) {
-        toast({
-          title: "Успешно!",
-          description: "Тест сохранен. После оплаты вы получите результаты на почту."
-        });
-      } else {
-        toast({
-          variant: "destructive",
-          title: "Ошибка",
-          description: "Не удалось сохранить тест. Попробуйте позже."
-        });
+      if (!saveResponse.ok) {
+        throw new Error('Ошибка при сохранении теста');
       }
+
+      const savedTest = await saveResponse.json();
+
+      // Создаем платеж
+      const paymentResponse = await fetch('https://checkapp-back.vercel.app/payment/create-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          testId: savedTest._id,
+          amount: 5990
+        })
+      });
+
+      if (!paymentResponse.ok) {
+        throw new Error('Ошибка при создании платежа');
+      }
+
+      const { paymentLink } = await paymentResponse.json();
+      
+      // Редирект на страницу оплаты
+      window.location.href = paymentLink;
+
     } catch (error) {
       console.error('Ошибка:', error.message);
       toast({
