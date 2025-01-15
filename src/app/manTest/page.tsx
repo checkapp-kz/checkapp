@@ -10,6 +10,9 @@ import {useReactToPrint} from "react-to-print";
 import ManTestPrintPage from "@/app/components/ManTestPrintPage";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { toast } from "@/hooks/use-toast";
+import { getCookie } from "cookies-next";
+import { log } from "console";
 
 export default function ManTest() {
   const [currentQuestionId, setCurrentQuestionId] = useState('0');
@@ -127,81 +130,43 @@ export default function ManTest() {
   const contentRef = useRef<HTMLDivElement>(null);
   const reactToPrintFn = useReactToPrint({ contentRef });
 
-  const handleSendPdf = async () => {
+  const handlePrint = async () => {
     try {
-      const element = contentRef.current;
-      if (!element) throw new Error('Element not found');
-
-      const canvas = await html2canvas(element);
-      const data = canvas.toDataURL('image/png');
-
-      const pdf = new jsPDF();
-      pdf.addImage(data, 'PNG', 0, 0, 595, 842);
-      pdf.save('document.pdf');
-
-      // Создание и отправка Blob
-      const pdfBlob = new Blob([pdf.output('arraybuffer')], { type: 'application/pdf' });
-      const formData = new FormData();
-      formData.append('file', pdfBlob, 'document.pdf');
-      formData.append('to', 'batrbekk@gmail.com');
-      formData.append('subject', 'Ваш спортивный чекап!');
-      formData.append('text', 'Поздравляем вас с прохождение спортивного чекапа! Будьте здоровы!');
-
-      const response = await fetch('https://checkapp-back.vercel.app/test/send-pdf', {
+      const userId = getCookie('user-id');
+      
+      const response = await fetch('https://checkapp-back.vercel.app/test/save', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userId: userId,
+          answers: answers,
+          testType: 'MALE_CHECKUP'
+        })
       });
 
       if (response.ok) {
-        console.log('PDF отправлен успешно');
+        toast({
+          title: "Успешно!",
+          description: "Тест сохранен. После оплаты вы получите результаты на почту."
+        });
       } else {
-        console.error('Ошибка при отправке PDF');
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Не удалось сохранить тест. Попробуйте позже."
+        });
       }
     } catch (error) {
       console.error('Ошибка:', error.message);
+      toast({
+        variant: "destructive",
+        title: "Ошибка",
+        description: "Произошла ошибка при сохранении теста"
+      });
     }
   };
-
-  // const sendRequest = () => {
-  //   const now = new Date();
-  //   const pad = (n) => n.toString().padStart(2, '0');
-  //   const timestamp = now.getUTCFullYear().toString() +
-  //     pad(now.getUTCMonth() + 1) +
-  //     pad(now.getUTCDate()) +
-  //     pad(now.getUTCHours()) +
-  //     pad(now.getUTCMinutes()) +
-  //     pad(now.getUTCSeconds());
-  //
-  //   const urlencoded = new URLSearchParams();
-  //   urlencoded.append("AMOUNT", "5990");
-  //   urlencoded.append("CURRENCY", "398");
-  //   urlencoded.append("ORDER", "27");
-  //   urlencoded.append("MERCH_RN_ID", "AF1POST90033686");
-  //   urlencoded.append("DESC", "TRTYPE=1 test transaction (Frictionless Flow)");
-  //   urlencoded.append("MERCHANT", "90033686");
-  //   urlencoded.append("MERCH_NAME", 'TOO CHECK APP');
-  //   urlencoded.append("TERMINAL", "88888881");
-  //   urlencoded.append("TIMESTAMP", timestamp);
-  //   urlencoded.append("MERCH_GMT", "+6");
-  //   urlencoded.append("TRTYPE", "1");
-  //   urlencoded.append("BACKREF", "https://www.checkapp.kz/sportTest?step=1");
-  //   urlencoded.append("LANG", "ru");
-  //   urlencoded.append("NONCE", "");
-  //   urlencoded.append("P_SIGN", "");
-  //   urlencoded.append("CLIENT_IP", "194.187.139.14");
-  //   urlencoded.append("M_INFO", "ewoJImJyb3dzZXJTY3JlZW5IZWlnaHQiOiIxOTIwIiwKCSJicm93c2VyU2NyZWVuV2lkdGgiOiIxMDgwIiwKCSJtb2JpbGVQaG9uZSI6ewoJCSJjYyI6ICI3IiAsCgkJInN1YnNjcmliZXIiOiI3NDc1NTU4ODg4IgoJfQp9");
-  //
-  //   const requestOptions:RequestInit = {
-  //     method: 'POST',
-  //     body: urlencoded,
-  //     redirect: 'follow'
-  //   };
-  //
-  //   fetch("https://test3ds.bcc.kz:5445/cgi-bin/cgi_link", requestOptions)
-  //     .then(response => response.text())
-  //     .then(result => console.log(result))
-  //     .catch(error => console.log('error', error));
-  // };
 
   return (
     <main className="overflow-x-hidden container mx-auto py-12 flex justify-center">
@@ -300,10 +265,7 @@ export default function ManTest() {
                 <ManTestPrintPage ref={contentRef} answer={answers} />
                 <Button
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
-                  onClick={() => {
-                    console.log(answers);
-                    reactToPrintFn();
-                  }}
+                  onClick={handlePrint}
                 >
                   Оплатить
                 </Button>
@@ -322,7 +284,7 @@ export default function ManTest() {
                 <li>поддерживать здоровье на пике,</li>
                 <li>сохранить энергию для жизни и достижений.</li>
               </ul>
-              <p>Пройдите анкету и получите персональный план диагностики. Забота о себе начинается сегодня!</p>
+              <p>Пройдите анкету и получите персональный план диагностики <b>за 5 минут.</b> <br /> Забота о себе начинается сегодня!</p>
               <div className="flex items-center justify-end">
                 <Button
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"

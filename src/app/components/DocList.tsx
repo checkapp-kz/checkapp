@@ -1,9 +1,87 @@
+"use client"
 import Image from "next/image";
 import Doctor1 from "@/public/docs/1.svg";
 import Doctor2 from "@/public/docs/2.svg";
 import Doctor3 from "@/public/docs/3.svg";
+import Doctor4 from "@/public/docs/4.svg";
+import Doctor5 from "@/public/docs/5.svg";
+import Doctor6 from "@/public/docs/6.svg";
+import Doctor7 from "@/public/docs/7.svg";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const DocList = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Анимация для каждого доктора
+      const doctors = containerRef.current?.querySelectorAll('.doctor-card');
+      
+      doctors?.forEach((doctor, index) => {
+        const image = doctor.querySelector('.doctor-image');
+        const content = doctor.querySelector('.doctor-content');
+        const position = doctor.querySelector('.doctor-position');
+        
+        // Создаем временную шкалу для каждого доктора
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: doctor,
+            start: "top center+=100",
+            end: "bottom center",
+            toggleActions: "play none none reverse"
+          }
+        });
+
+        // Анимация зависит от четности индекса (для чередования направления)
+        if (index % 2 === 0) {
+          tl.from(image, {
+            x: -100,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          })
+          .from(content, {
+            x: 100,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          }, "-=0.6")
+          .from(position, {
+            y: 20,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.out"
+          }, "-=0.4");
+        } else {
+          tl.from(image, {
+            x: 100,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          })
+          .from(content, {
+            x: -100,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          }, "-=0.6")
+          .from(position, {
+            y: 20,
+            opacity: 0,
+            duration: 0.4,
+            ease: "power2.out"
+          }, "-=0.4");
+        }
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   const docsList = [
     {
       id: 1,
@@ -51,6 +129,65 @@ const DocList = () => {
           <p>Наш специалист придерживается индивидуального подхода, воплощая принципы персонализированной медицины как в любительском, так и в профессиональном спорте. Доверьте свое здоровье эксперту, который понимает важность поддержания вашего тела в превосходной форме.</p>
         </>
       )
+    },
+    {
+      id: 4,
+      img: Doctor4,
+      position: 'Врач-терапевт',
+      name: 'Бекбергенова Жанагуль Боранбаевна',
+      text: (
+        <>
+          <p>15 лет практического опыта как в организациях первичного звена, так и стационарного уровня. Автор и соавтор публикаций как в рецензируемых международных журналах, так в отечественных и журналах СНГ. Имеет опыт работы в грантовых исследованиях.</p>
+          <p>Жанагуль Боранбаевна непрерывно занимается повышением квалификации не только в Республике Казахстан, но и за рубежом. Является стипендиатом международной стипендии «Болашак», прошла стажировки в Израиле, России.</p>
+        </>
+      )
+    },
+    {
+      id: 5,
+      img: Doctor5,
+      position: 'Интервенционный кардиолог',
+      name: 'Алимбаев Кайсар Серикович',
+      text: (
+        <>
+          <p>Опытный интервенционный кардиолог с более чем 10-летним стажем работы в Национальном научном кардиохирургическом центре в Астане. Кайсар Серикович специализируется на коронарной ангиографии и перкутанных вмешательствах при ишемической болезни сердца.</p>
+          <p>Продолжает совершенствовать свои навыки, участвуя в специализированных конференциях и публикуя научные работы в области интервенционной кардиологии.</p>
+        </>
+      )
+    },
+    {
+      id: 6,
+      img: Doctor6,
+      position: 'Врач-эндокринолог',
+      name: 'Данилова Диана Садыковна',
+      text: (
+        <>
+          <p>
+            10-летний опыт работы в лечении эндокринных заболеваний у взрослых и детей. Начала свой путь в практической медицине со стационарной практики в Национальном научном медицинском центре Республики Казахстан, где работала не только врачом отделения, но и являлась научным сотрудником.
+          </p>
+          <p>
+            Ежегодно проходит обучения в таких сферах, как эндокринология, диетология, нутрициология. На данный момент активно занимается проблемой ожирения взрослых и детей, проводит просветительную работу по возможным последствиям и рискам.
+          </p>
+          <p>
+            Осуществляет прием пациентов с гормональной патологией, используя персонализированный подход в лечении.
+          </p>
+        </>
+      )
+    },
+    {
+      id: 7,
+      img: Doctor7,
+      position: 'Врач-ревматолог',
+      name: 'Сикирова Мадина Сериковна',
+      text: (
+        <>
+          <p>
+            Более 5 лет практики в ревматологии, окончила Медицинский университет Астаны (МУА). Имеет опыт работы в стационаре и поликлиниках. Занимается диагностикой и лечением воспалительных, дегенеративно-дистрофических, системных заболеваний соединительной ткани. Работает с такими заболеваниями как: остеоартрит (артроз), ревматоидный артрит,спондилоартриты, в том числе реактивные артриты, артриты, ассоциированные с воспалительными заболеваниями кишечника (ВЗК), псориатический артрит, а также подагрический артрит (подагра), системная красная волчанка, системная склеродермия, болезнь Шегрена, системные васкулиты, фибромиалгия и другие.
+          </p>
+          <p>
+            Руководствуется исключительно современными принципами доказательной медицины. Умеет доступно объяснить сложное простыми словами. Фокус на результат и улучшение качества жизни пациентов.
+          </p>
+        </>
+      )
     }
   ];
 
@@ -65,18 +202,22 @@ const DocList = () => {
         человечность в каждом взаимодействии. Мы верим, что настоящая забота о здоровье начинается с глубокого понимания
         к каждому пациенту. Именно поэтому основа CheckApp – персонализированный подход.
       </h4>
-      <div className="flex flex-col items-center gap-y-8">
+      <div ref={containerRef} className="flex flex-col items-center gap-y-8">
         {docsList.map((item, index) => (
           <div
             key={item.id}
-            className={`flex items-center lg:items-start flex-col lg:flex-row lg:max-w-[90%] pb-8 gap-6 lg:gap-16
+            className={`doctor-card flex items-center lg:items-start flex-col lg:flex-row lg:max-w-[90%] pb-8 gap-6 lg:gap-16
               ${index % 2 === 0 ? '' : 'flex-row-reverse'}
-              ${index !== docsList.length - 1 ? 'border-b' : ''}`} // Проверка на последний элемент
+              ${index !== docsList.length - 1 ? 'border-b' : ''}`}
           >
-            <Image src={item.img} alt="doctor-img" className="rounded-2xl"/>
-            <div className="flex flex-col gap-y-4">
+            <Image 
+              src={item.img} 
+              alt="doctor-img" 
+              className="doctor-image rounded-2xl"
+            />
+            <div className="doctor-content flex flex-col gap-y-4">
               <h3 className="text-3xl font-bold text-[#1C1F25]">{item.name}</h3>
-              <p className="px-4 py-2 rounded-full bg-[#1D7CBC] text-white w-fit shadow-md">
+              <p className="doctor-position px-4 py-2 rounded-full bg-[#1D7CBC] text-white w-fit shadow-md">
                 {item.position}
               </p>
               <div className="text-[#4B5162] text-ld flex flex-col gap-y-2">
@@ -87,7 +228,7 @@ const DocList = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default DocList;

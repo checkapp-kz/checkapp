@@ -16,7 +16,7 @@ import {Icons} from "@/components/ui/icons";
 import {toast} from "@/hooks/use-toast";
 import {useRouter} from "next/navigation";
 
-const CheckCards = () => {
+export default function CheckCards() {
   const cardList = [
     {
       img: Card1,
@@ -96,7 +96,7 @@ const CheckCards = () => {
   }
 
   return (
-    <section id="check-list" className="container mx-auto mt-24 flex flex-col gap-y-12 items-center px-4 lg:px-0">
+    <section id="check-cards" className="container mx-auto mt-24 flex flex-col gap-y-12 items-center px-4 lg:px-0">
       <h1 className="text-[#1C1F25] text-3xl lg:text-5xl font-semibold text-center">Персонализируй свой чекап</h1>
       <Carousel
         className="w-full"
@@ -182,5 +182,3 @@ const CheckCards = () => {
     </section>
   )
 }
-
-export default CheckCards;

@@ -44,10 +44,7 @@ export default function Analyse() {
   return (
     <main className="lg:container lg:mx-auto p-4 lg:p-0 lg:pb-8 flex">
       <div className="px-8 py-4 border flex flex-col gap-y-4 rounded-lg min-w-56 h-fit">
-        <Link href="#" className={cn(pathname === "#" ? "text-[#1D7CBC]" : "", "hover:underline")}>
-          Мои данные
-        </Link>
-        <Link href="#" className={cn(pathname === "#" ? "text-[#1D7CBC]" : "", "hover:underline")}>
+        <Link href="/checkups" className={cn(pathname === "#" ? "text-[#1D7CBC]" : "", "hover:underline")}>
           Мои чекапы
         </Link>
         <Link href="/analyse" className={cn(pathname === "/analyse" ? "text-[#1D7CBC]" : "", "hover:underline")}>

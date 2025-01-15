@@ -35,6 +35,7 @@ const UserComponent = () => {
         setMe(data);
         setCookie('user-name', data.name);
         setCookie('user-email', data.email);
+        setCookie('user-id', data.id);
       }
     } catch (error) {
       console.error("Ошибка при получении данных:", error);
@@ -52,6 +53,10 @@ const UserComponent = () => {
 
   const goToAnalyse = useCallback(() => {
     router.push('/analyse');
+  }, [router]);
+
+  const goToCheckups = useCallback(() => {
+    router.push('/checkups');
   }, [router]);
 
   useEffect(() => {
@@ -87,7 +92,7 @@ const UserComponent = () => {
               <p>Добро пожаловать</p>
               <p className="font-medium text-[#1D7CBC]">{me?.name || "Неизвестный пользователь"}!</p>
             </div>
-            <Button variant="ghost" className="gap-x-2 justify-start border-b rounded-none">
+            <Button variant="ghost" className="gap-x-2 justify-start border-b rounded-none" onClick={goToCheckups}>
               <List className="w-4 h-4" />
               Мои чекапы
             </Button>

@@ -62,7 +62,7 @@ const Footer = () => {
             персональных данных
           </a>
           <Link href="/payment-rule" className="text-[#4B5162] font-medium">
-            Условиями оплаты и возрата платежей
+            Условия оплаты и возрата платежей
           </Link>
         </div>
       </div>

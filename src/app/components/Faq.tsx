@@ -1,8 +1,96 @@
 import Stars from "@/public/stars.svg";
 import Image from "next/image";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { toast } from "@/hooks/use-toast";
+import { getCookie } from "cookies-next";
+import { Textarea } from "@/components/ui/textarea";
 
 const Faq = () => {
+  const [question, setQuestion] = useState('');
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const token = getCookie('user-token');
+    setIsAuthenticated(!!token);
+  }, []);
+
+  const handleSubmitQuestion = async () => {
+    try {
+      if (!question.trim()) {
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Пожалуйста, введите ваш вопрос"
+        });
+        return;
+      }
+
+      if (!isAuthenticated && !email.trim()) {
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Пожалуйста, введите вашу почту"
+        });
+        return;
+      }
+
+      if (!isAuthenticated && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Пожалуйста, введите корректный email"
+        });
+        return;
+      }
+
+      setIsLoading(true);
+
+      // Получаем email из куки если пользователь авторизован, иначе из поля ввода
+      const userEmail = isAuthenticated ? getCookie('user-email') : email;
+
+      const response = await fetch('https://checkapp-back.vercel.app/faq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          mail: userEmail,
+          description: question
+        })
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Успешно!",
+          description: "Ваш вопрос отправлен. Мы ответим вам в ближайшее время."
+        });
+        setQuestion('');
+        if (!isAuthenticated) {
+          setEmail('');
+        }
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Ошибка",
+          description: "Не удалось отправить вопрос. Попробуйте позже."
+        });
+      }
+    } catch (error) {
+      console.error('Ошибка:', error);
+      toast({
+        variant: "destructive",
+        title: "Ошибка",
+        description: "Произошла ошибка при отправке вопроса"
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const faqList = [
     {
@@ -10,9 +98,9 @@ const Faq = () => {
       title: 'Как это работает?',
       text: (
         <div className="flex flex-col gap-y-0.5 text-[#4B5162]">
-          <p>1. Выбрать чекап-пакет.</p>
+          <p>1. Зарегистрировавшись, выберите нужный вам чекап-пакет.</p>
           <p>2. Пройти онлайн-анкетирование для формирования персонализированного плана обследования.</p>
-          <p>3. Онлайн-оплата.</p>
+          <p>3. Провести онлайн-оплату для получения персонализированного плана обследования на элек.почту.</p>
           <p>4. Получить персонализированный план обследования на элек.почту.</p>
           <p>5. Пройти обследование в удобном для вас месте либо обратиться к нашим партнерам.</p>
         </div>
@@ -20,89 +108,94 @@ const Faq = () => {
     },
     {
       id: 2,
-      title: 'Окончательная ли стоимость?',
+      title: 'Консилиум врачей',
       text: (
-        <p className="text-[#4B5162]">
-          Да, окончательная. Вы платите за список рекомендаций по сдаче анализов крови, прохождению функциональной диагностики от консилиума медицинских специалистов.
-        </p>
+        <div className="flex flex-col gap-y-2 text-[#4B5162]">
+          <p>
+            Только в CheckApp ваш анамнез собирает целый консилиум специалистов.
+          </p>
+          <p className="my-2">
+            Пример консилиума в спортивном чекапе:
+            <ul className="ml-2 mt-1">
+              <li>• ведущий специалист по направлению - спортивный врач.</li>
+              <li>• эксперты смежных областей (кардиолог, эндокринолог, терапевт).</li>
+            </ul>
+          </p>
+          <p>
+            Это исключает упущения и однобокий взгляд. Один врач может не знать всех нюансов, важнейших для точной диагностики.
+          </p>
+        </div>
       )
     },
     {
       id: 3,
-      title: 'Какие преимущества дает CheckApp?',
+      title: 'Персонализирующий алгоритм',
       text: (
         <div className="flex flex-col gap-y-2 text-[#4B5162]">
-          <div className="flex flex-col gap-y-2">
-            <b>1. Консилиум врачей</b>
-            <div className="ml-3">
-              <p>
-                Только в CheckApp ваш анамнез собирает целый консилиум специалистов.
-              </p>
-              <p className="my-2">
-                Наши врачи работают в команде:
-                <ul>
-                  <li className="ml-2">• ведущий специалист по направлению - спортивный врач.</li>
-                  <li className="ml-2">• эксперты смежных областей (например, кардиолог, эндокринолог, невролог для
-                    спортивного чекапа).
-                  </li>
-                </ul>
-              </p>
-              <p>
-                Это исключает упущения и однобокий взгляд. Один врач может не знать всех нюансов, важнейших для точной
-                диагностики.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-y-2">
-            <b>2. Минимизация человеческого фактора</b>
-            <div className="ml-3">
-              <p>
-                На первичном приеме врачи часто не успевают задать важные вопросы.
-              </p>
-              <p className="my-2">
-                CheckApp исключает такие риски:
-                <ul>
-                  <li className="ml-2">• анкеты разработаны консилиумами, без спешки и с учетом всех деталей.</li>
-                  <li className="ml-2">• только необходимые вопросы — ничего лишнего.
-                  </li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-y-2">
-            <b>3. Независимость и свобода выбора</b>
-            <div className="ml-3">
-              <p>
-                CheckApp <b>не заинтересован</b> в «накрутке» услуг и дает вам свободу выбора: обследуйтесь там, где вам
-                удобно, или у проверенных специалистов.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-y-2">
-            <b>4. Время — главный ресурс</b>
-            <div className="ml-3">
-              <p className="my-2">
-                CheckApp позволяет вам:
-                <ul>
-                  <li className="ml-2">• заполнить анкету <b>в любое время</b> и без очередей.</li>
-                  <li className="ml-2">• прийти к врачу уже подготовленным — с результатами первичных анализов.</li>
-                </ul>
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-y-2">
-            <b>5. Экономия средств</b>
-            <div className="ml-3">
-              <p>
-                Вы получаете рекомендации консилиума врачей по цене ниже стандартного приема терапевта. Только нужные анализы и никакой скрытой выгоды.
-              </p>
-            </div>
-          </div>
+          <p>
+            В вопросах диагностики состояния здоровья не может быть унифицированного подхода. Следуя этому принципу, CheckApp уделяет особое внимание персонализации, разработав и постоянно улучшая уникальный алгоритм в своих продуктах, который помогает составить план обследования именно для вас.
+          </p>
         </div>
       )
     },
     {
       id: 4,
+      title: 'Минимизация человеческого фактора',
+      text: (
+        <div className="flex flex-col gap-y-2 text-[#4B5162]">
+          <p>
+            На первичном приеме врачи часто могут не успеть или не задать важные вопросы, упустив ценную информацию о пациенте.
+          </p>
+          <p>
+            CheckApp исключает такие риски:
+            <ul className="ml-2 mt-1">
+              <li>• анкеты разработаны не одним специалистом, а консилиумами врачей, без спешки и с учетом всех деталей.</li>
+              <li>• анкеты сформированы из действительно необходимых вопросов.</li>
+            </ul>
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 5,
+      title: 'Независимость и свобода выбора',
+      text: (
+        <div className="flex flex-col gap-y-2 text-[#4B5162]">
+          <p>
+            CheckApp не заинтересован в «накрутке» ненужных анализов и других услуг. Мы даем вам свободу выбора: обследуйтесь там, где вам удобно. Однако если вы растеряны и не знаете, куда именно обратиться, вы всегда можете воспользоваться услугами рекомендуемых и проверенных нами специалистов и медицинских центров. Это значит, что они разделяют приверженность CheckApp принципам честной и доказательной медицины.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 6,
+      title: 'Время — главный ресурс',
+      text: (
+        <div className="flex flex-col gap-y-2 text-[#4B5162]">
+          <p>
+            CheckApp позволяет вам:
+            <ul className="ml-2 mt-1">
+              <li>• заполнить анкету в любое время онлайн и без очередей.</li>
+              <li>• получить ваш персонализированный план обследования за 5 минут</li>
+              <li>• прийти к врачу уже подготовленным — с результатами первичных анализов.</li>
+            </ul>
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 7,
+      title: 'Экономия средств',
+      text: (
+        <div className="flex flex-col gap-y-2 text-[#4B5162]">
+          <p>
+            Вы получаете рекомендации консилиума врачей по цене ниже стандартного первичного приема специалиста. Только нужные анализы и никакой скрытой выгоды.
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 8,
       title: 'Есть ли у вас корпоративные предложения?',
       text: (
         <div className="flex flex-col gap-y-2 text-[#4B5162]">
@@ -112,26 +205,11 @@ const Faq = () => {
             продуктивность.
           </p>
           <p>
-            Пожалуйста, напишите нам ваш запрос на <a className="underline text-[#1D7CBC]"
-                                                      href="mailto:info@checkapp.kz">info@checkapp.kz</a>
+            Пожалуйста, напишите нам ваш запрос на <a className="underline text-[#1D7CBC]" href="mailto:info@checkapp.kz">info@checkapp.kz</a>
           </p>
         </div>
       )
     },
-    {
-      id: 5,
-      title: 'Что такое чекап?',
-      text: (
-        <div className="flex flex-col gap-y-2 text-[#4B5162]">
-          <p>
-            Чекап — это комплексный медицинский осмотр, который помогает выявить потенциальные проблемы со здоровьем на ранних стадиях, часто еще до появления симптомов. Он включает анализы и консультации специалистов, которые помогают составить точную картину состояния организма. Регулярные чекапы позволяют вовремя замечать отклонения от нормы и, если необходимо, начать профилактические меры или лечение.
-          </p>
-          <p>
-            На основе ваших ответов CheckApp подбирает только те обследования и специалистов, которые действительно необходимы для анализа вашего состояния. Это помогает избежать ненужных трат и процедур, а также обеспечить максимальную пользу для вашего здоровья.
-          </p>
-        </div>
-      )
-    }
   ];
 
   return (
@@ -145,9 +223,33 @@ const Faq = () => {
           <h1 className="text-[#1C1F25] font-bold text-3xl lg:text-5xl">
             Frequently asked questions
           </h1>
-          <p className="text-[#4B5162] ">
+          <p className="text-[#4B5162]">
             Есть вопросы? У нас есть ответы для вас
           </p>
+          <div className="flex flex-col gap-y-2 md:max-w-[70%] w-full">
+            {!isAuthenticated && (
+              <Input
+                type="email"
+                placeholder="Введите вашу почту"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-white border-[#B6BCCD]"
+              />
+            )}
+            <Textarea
+              placeholder="Введите ваш вопрос"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              className="bg-white border-[#B6BCCD] min-h-[100px] resize-none"
+            />
+            <Button 
+              onClick={handleSubmitQuestion}
+              disabled={isLoading}
+              className="bg-[#1D7CBC] hover:bg-[#1666a0] transition-colors w-fit"
+            >
+              {isLoading ? "Отправка..." : "Задать вопрос"}
+            </Button>
+          </div>
         </div>
         <Accordion
           type="single"

@@ -21,15 +21,11 @@ const Navbar = () => {
     },
     {
       label: 'Чекап-пакеты',
-      link: '/#check-list'
+      link: '/#check-cards'
     },
     {
       label: 'Компаниям',
       link: '/company'
-    },
-    {
-      label: 'Партнеры',
-      link: '/#partners'
     },
     {
       label: 'FAQ',
