@@ -123,7 +123,7 @@ export default function ManTest() {
       const userId = getCookie('user-id');
       
       // Сохраняем тест
-      const saveResponse = await fetch('https://checkapp-back.vercel.app/test/save', {
+      const saveResponse = await fetch('https://backend-checkapp.vercel.app/test/save', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ export default function ManTest() {
       const savedTest = await saveResponse.json();
 
       // Создаем платеж
-      const paymentResponse = await fetch('https://checkapp-back.vercel.app/payment/create-payment', {
+      const paymentResponse = await fetch('https://backend-checkapp.vercel.app/payment/create-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

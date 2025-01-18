@@ -26,7 +26,7 @@ export default function CheckupsPage() {
     const fetchTests = async () => {
       try {
         const userId = getCookie('user-id');
-        const response = await fetch(`https://checkapp-back.vercel.app/test/user-tests/${userId}`);
+        const response = await fetch(`https://backend-checkapp.vercel.app/test/user-tests/${userId}`);
         
         if (response.ok) {
           const data = await response.json();

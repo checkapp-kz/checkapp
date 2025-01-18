@@ -56,7 +56,7 @@ const Reviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch('https://checkapp-back.vercel.app/reviews');
+        const response = await fetch('https://backend-checkapp.vercel.app/reviews');
         if (response.ok) {
           const data = await response.json();
           // Если есть отзывы с бэкенда, используем их, иначе используем дефолтные
@@ -87,7 +87,7 @@ const Reviews = () => {
 
       setIsLoading(true);
 
-      const response = await fetch('https://checkapp-back.vercel.app/reviews', {
+      const response = await fetch('https://backend-checkapp.vercel.app/reviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

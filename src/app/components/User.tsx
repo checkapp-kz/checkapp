@@ -22,7 +22,7 @@ const UserComponent = () => {
     if (!token) return; // Проверяем наличие токена
 
     try {
-      const response = await fetch('https://checkapp-back.vercel.app/users/me', {
+      const response = await fetch('https://backend-checkapp.vercel.app/users/me', {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',

@@ -53,7 +53,7 @@ const Faq = () => {
       // Получаем email из куки если пользователь авторизован, иначе из поля ввода
       const userEmail = isAuthenticated ? getCookie('user-email') : email;
 
-      const response = await fetch('https://checkapp-back.vercel.app/faq', {
+      const response = await fetch('https://backend-checkapp.vercel.app/faq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
