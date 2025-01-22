@@ -134,13 +134,13 @@ export default function ManTest() {
           testType: 'MALE_CHECKUP'
         })
       });
-
+  
       if (!saveResponse.ok) {
         throw new Error('Ошибка при сохранении теста');
       }
-
+  
       const savedTest = await saveResponse.json();
-
+  
       // Создаем платеж
       const paymentResponse = await fetch('https://backend-checkapp.vercel.app/payment/create-payment', {
         method: 'POST',
@@ -152,16 +152,25 @@ export default function ManTest() {
           amount: 5990
         })
       });
-
+  
       if (!paymentResponse.ok) {
         throw new Error('Ошибка при создании платежа');
       }
-
-      const { paymentLink } = await paymentResponse.json();
+  
+      const { paymentResponse: htmlContent } = await paymentResponse.json();
       
-      // Редирект на страницу оплаты
-      window.location.href = paymentLink;
-
+      const paymentWindow = window.open('', '_blank');
+      if (paymentWindow) {
+        paymentWindow.document.write(htmlContent);
+        paymentWindow.document.close();
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Внимание",
+          description: "Пожалуйста, разрешите всплывающие окна для этого сайта"
+        });
+      }
+  
     } catch (error) {
       console.error('Ошибка:', error.message);
       toast({
