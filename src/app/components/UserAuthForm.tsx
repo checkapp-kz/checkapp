@@ -39,7 +39,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://checkapp-back.vercel.app/auth/register', {
+    const response = await fetch('https://backend-checkapp.vercel.app/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

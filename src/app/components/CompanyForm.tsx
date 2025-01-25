@@ -75,7 +75,7 @@ const CompanyForm = () => {
 
   const sendMail = useCallback(async () => {
     setIsLoading(true);
-    const response = await fetch('https://checkapp-back.vercel.app/partner/contact', {
+    const response = await fetch('https://backend-checkapp.vercel.app/partner/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

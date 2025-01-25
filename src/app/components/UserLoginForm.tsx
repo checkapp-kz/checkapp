@@ -27,7 +27,7 @@ export function UserLoginForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://checkapp-back.vercel.app/auth/login', {
+    const response = await fetch('https://backend-checkapp.vercel.app/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -30,7 +30,7 @@ export function UserConfirmPassword({ className, ...props }: UserAuthFormProps) 
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://checkapp-back.vercel.app/auth/reset-password', {
+    const response = await fetch('https://backend-checkapp.vercel.app/auth/reset-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

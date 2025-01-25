@@ -121,7 +121,7 @@ export default function SportTest() {
       formData.append('subject', 'Ваш спортивный чекап!');
       formData.append('text', 'Поздравляем вас с прохождение спортивного чекапа! Будьте здоровы!');
 
-      const response = await fetch('https://checkapp-back.vercel.app/test/send-pdf', {
+      const response = await fetch('https://backend-checkapp.vercel.app/test/send-pdf', {
         method: 'POST',
         body: formData,
       });

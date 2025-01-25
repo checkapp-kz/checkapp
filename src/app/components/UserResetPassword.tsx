@@ -27,7 +27,7 @@ export function UserResetPassword({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://checkapp-back.vercel.app/auth/forgot-password', {
+    const response = await fetch('https://backend-checkapp.vercel.app/auth/forgot-password', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
