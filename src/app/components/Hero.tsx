@@ -100,13 +100,16 @@ export default function Hero() {
             ref={headingRef}
             className="text-3xl md:text-6xl font-bold mb-6 leading-tight"
           >
-            Все просто. <br /> Чекапы «без воды»
+            <img className="mx-auto" alt="logo" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" src="public/images/checkapp.png"></img>
+            <br/>
+            Чекапы «без воды»
           </h1>
-          <p 
+          <p
             ref={textRef}
             className="text-xl md:text-xl text-gray-600 mb-8 leading-relaxed"
           >
-            Получи свой персонализированный план обследования от консилиума врачей. Только доказательная медицина. Только нужные анализы без лишних временных и финансовых трат всего от 4990 тг.
+            Только доказательная медицина. Только действительно нужные анализы.<br />
+            Получи свой персонализированный план обследования от консилиума врачей всего от 4990 тг.
           </p>
           <Button 
             ref={buttonRef}
