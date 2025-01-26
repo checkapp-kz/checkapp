@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import Logo from "@/public/images/checkapp.png";
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -100,8 +102,9 @@ export default function Hero() {
             ref={headingRef}
             className="text-3xl md:text-6xl font-bold mb-6 leading-tight"
           >
-            <img className="mx-auto" alt="logo" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" src="public/images/checkapp.png"></img>
-            <br/>
+            <div className="flex justify-center">
+              <Image src={Logo} alt="logo" className="w-40 md:w-56" />
+            </div>
             Чекапы «без воды»
           </h1>
           <p
