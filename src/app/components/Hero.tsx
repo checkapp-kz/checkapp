@@ -100,7 +100,7 @@ export default function Hero() {
             ref={headingRef}
             className="text-3xl md:text-6xl font-bold mb-6 leading-tight"
           >
-            <img className="mx-auto" alt="logo" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" src="public/images/checkapp.png"></img>
+            {/* <img className="mx-auto" alt="logo" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" src="public/images/checkapp.png"></img> */}
             <br/>
             Чекапы «без воды»
           </h1>
