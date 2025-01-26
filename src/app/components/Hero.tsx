@@ -102,9 +102,6 @@ export default function Hero() {
             ref={headingRef}
             className="text-3xl md:text-6xl font-bold mb-6 leading-tight"
           >
-            <div className="flex justify-center">
-              <Image src={Logo} alt="logo" className="w-40 md:w-56" />
-            </div>
             Чекапы «без воды»
           </h1>
           <p
