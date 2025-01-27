@@ -119,7 +119,8 @@ export default function CheckCards() {
                 <p className="text-white text-lg">Цена: {card.price}</p>
                 <Button
                   className="text-white border rounded bg-transparent hover:bg-transparent border-white mt-2 flex items-center justify-center w-full px-4 py-2 opacity-0 group-hover:opacity-100 transition duration-300"
-                  onClick={() => {checkAuth(card.link)}}
+                  // onClick={() => {checkAuth(card.link)}}
+                  onClick={() => {router.push(card.link)}}
                 >
                   Узнать подробнее
                 </Button>
