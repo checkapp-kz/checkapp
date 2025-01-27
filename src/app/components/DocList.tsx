@@ -7,9 +7,12 @@ import Doctor4 from "@/public/docs/4.svg";
 import Doctor5 from "@/public/docs/5.svg";
 import Doctor6 from "@/public/docs/6.svg";
 import Doctor7 from "@/public/docs/7.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,6 +91,7 @@ const DocList = () => {
       img: Doctor1,
       position: 'Врач гинеколог',
       name: 'Омарова Жанара Дисембаевна',
+      instagramLink: 'https://www.instagram.com/doc_omarova_zhanara/',
       text: (
         <>
           <p>
@@ -104,6 +108,7 @@ const DocList = () => {
       img: Doctor2,
       position: 'Врач уролог-андролог',
       name: 'Фролов Ростислав Александрович',
+      instagramLink: 'https://www.instagram.com/dr.frolov/',
       text: (
         <>
           <p>
@@ -123,6 +128,7 @@ const DocList = () => {
       img: Doctor3,
       position: 'Спортивный врач',
       name: 'Реймер Эвальд Олегович',
+      instagramLink: 'https://www.instagram.com/evald_doc/',
       text: (
         <>
           <p>Более 10 лет опыта в медицине. Пройдя стажировки в России, Великобритании и Израиле, Реймер Олегович демонстрирует высокий уровень профессионализма и этики в спортивной медицине. Он тесно сотрудничает с национальными командами по триатлону, биатлону, женскому боксу и легкой атлетике, а также активно взаимодействует с Центром спортивной медицинской реабилитации.</p>
@@ -135,6 +141,7 @@ const DocList = () => {
       img: Doctor4,
       position: 'Врач-терапевт',
       name: 'Бекбергенова Жанагуль Боранбаевна',
+      instagramLink: 'https://www.instagram.com/doctor.zhanna/',
       text: (
         <>
           <p>15 лет практического опыта как в организациях первичного звена, так и стационарного уровня. Автор и соавтор публикаций как в рецензируемых международных журналах, так в отечественных и журналах СНГ. Имеет опыт работы в грантовых исследованиях.</p>
@@ -147,6 +154,7 @@ const DocList = () => {
       img: Doctor5,
       position: 'Интервенционный кардиолог',
       name: 'Алимбаев Кайсар Серикович',
+      instagramLink: 'https://www.instagram.com/kaisaralimbayev/',
       text: (
         <>
           <p>Опытный интервенционный кардиолог с более чем 10-летним стажем работы в Национальном научном кардиохирургическом центре в Астане. Кайсар Серикович специализируется на коронарной ангиографии и перкутанных вмешательствах при ишемической болезни сердца.</p>
@@ -159,6 +167,7 @@ const DocList = () => {
       img: Doctor6,
       position: 'Врач-эндокринолог',
       name: 'Данилова Диана Садыковна',
+      instagramLink: 'https://www.instagram.com/danilova_endocrinolog/',
       text: (
         <>
           <p>
@@ -178,6 +187,7 @@ const DocList = () => {
       img: Doctor7,
       position: 'Врач-ревматолог',
       name: 'Сикирова Мадина Сериковна',
+      instagramLink: 'https://www.instagram.com/sikirova_m/',
       text: (
         <>
           <p>
@@ -221,7 +231,16 @@ const DocList = () => {
                 {item.position}
               </p>
               <div className="text-[#4B5162] text-ld flex flex-col gap-y-2">
-                {item.text}
+                <p>
+                  {item.text}
+                </p>
+                <a 
+                  href={item.instagramLink + '?utm_source=checkapp.kz&utm_medium=referral' }
+                  target="_blank"
+                  className="text-[#1D7CBC] font-medium hover:underline"
+                >
+                    <FontAwesomeIcon icon={faInstagram} className="w-8 h-8" />
+                </a>
               </div>
             </div>
           </div>
