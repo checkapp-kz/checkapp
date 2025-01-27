@@ -35,6 +35,36 @@ export default function CheckCards() {
       title: 'Мужской',
       link: '/manTest',
       price: '4 990 ₸'
+    },
+    {
+      img: Card3,
+      title: 'Планирование беременности (женский)',
+      link: '/manTest',
+      price: '4 990 ₸'
+    },
+    {
+      img: Card3,
+      title: 'Послеродовой чекап',
+      link: '/manTest',
+      price: '4 990 ₸'
+    },
+    {
+      img: Card3,
+      title: 'Планирование беременности (мужской)',
+      link: '/manTest',
+      price: '4 990 ₸'
+    },
+    {
+      img: Card3,
+      title: 'Мужской профиль -  ЗППП',
+      link: '/manTest',
+      price: '4 990 ₸'
+    },
+    {
+      img: Card3,
+      title: 'Женский профиль -  ЗППП',
+      link: '/manTest',
+      price: '4 990 ₸'
     }
   ];
 
