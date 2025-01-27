@@ -22,7 +22,7 @@ export default function CheckCards() {
       img: Card1,
       title: 'Спортивный',
       link: '/sportTest',
-      price: '5 990 ₸'
+      price: '4 990 ₸'
     },
     {
       img: Card2,
