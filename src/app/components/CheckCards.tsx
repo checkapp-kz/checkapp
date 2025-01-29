@@ -56,15 +56,9 @@ export default function CheckCards() {
     },
     {
       img: Card3,
-      title: 'Мужской профиль -  ЗППП',
+      title: 'Профиль ЗППП',
       link: '/manTest',
-      price: '4 990 ₸'
-    },
-    {
-      img: Card3,
-      title: 'Женский профиль -  ЗППП',
-      link: '/manTest',
-      price: '4 990 ₸'
+      price: '12 000 ₸'
     }
   ];
 
