@@ -2,15 +2,19 @@
 
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import {UserAuthForm} from "@/app/components/UserAuthForm";
 import {buttonVariants} from "@/components/ui/button";
+import { AuthContext } from "@/context/AuthContext";
 import {cn} from "@/lib/utils";
 import Image from "next/image";
 import Logo from "@/public/logo.svg";
 
 export default function Home() {
+  const auth = useContext(AuthContext);
+  const router = useRouter();
 
   useEffect(() => {
     AOS.init({

@@ -1,6 +1,11 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState, useContext} from "react";
+import { AuthProvider } from "../../context/AuthContext";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import {cn} from "@/lib/utils";
+import {buttonVariants} from "@/components/ui/button";
 import { ManTest as Test } from "@/app/types/tests";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -10,6 +15,7 @@ import {useReactToPrint} from "react-to-print";
 import ManTestPrintPage from "@/app/components/ManTestPrintPage";
 import { toast } from "@/hooks/use-toast";
 import { getCookie } from "cookies-next";
+import { AuthContext } from "@/context/AuthContext";
 import config from '../../config';
 
 export default function ManTest() {
@@ -20,6 +26,9 @@ export default function ManTest() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [otherAnswer, setOtherAnswer] = useState('');
+  const [showLoginModal, setShowLoginButton] = useState(false);
+
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     if (currentQuestionId === '13') {
@@ -34,6 +43,14 @@ export default function ManTest() {
       }
     }
   }, [currentQuestionId]);
+
+  useEffect(() => {
+    if (!auth?.user) {
+        setShowLoginButton(true);
+    } else {
+        console.log("User is authorized, performing action...");
+    }
+  });
 
   const handleNext = () => {
     // Определяем ответ: если есть текстовое поле (otherAnswer), используем его значение, иначе выбранный вариант
@@ -298,14 +315,22 @@ export default function ManTest() {
               </ul>
               <p>Пройдите анкету и получите персональный план диагностики <b>за 5 минут.</b> <br /> Забота о себе начинается сегодня!</p>
               <div className="flex items-center justify-end">
-                <Button
-                  className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
-                  onClick={() => {
-                    setCurrentQuestionId('1');
-                  }}
+                {setShowLoginButton && <Link
+                  href="/login"
+                  className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "absolute right-4 top-4 md:right-8 md:top-8 text-[#4B5162]"
+                  )}
                 >
+                  Войти
+                </Link>}
+                {!showLoginModal && <Button
+                  className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
+                  onClick={
+                      () => {setCurrentQuestionId('1');}
+                  }>
                   Начать
-                </Button>
+                </Button>}
               </div>
             </div>
           )
