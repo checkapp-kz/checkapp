@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
+import config from '../../config';
 
 interface Review {
   id: number;
@@ -56,7 +57,7 @@ const Reviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await fetch('https://backend-checkapp.vercel.app/reviews');
+        const response = await fetch(`${config.BACKEND_URL}/reviews`);
         if (response.ok) {
           const data = await response.json();
           // Если есть отзывы с бэкенда, используем их, иначе используем дефолтные
@@ -87,7 +88,7 @@ const Reviews = () => {
 
       setIsLoading(true);
 
-      const response = await fetch('https://backend-checkapp.vercel.app/reviews', {
+      const response = await fetch(`${config.BACKEND_URL}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

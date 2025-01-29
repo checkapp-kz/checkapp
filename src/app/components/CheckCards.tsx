@@ -15,6 +15,7 @@ import * as React from "react";
 import {Icons} from "@/components/ui/icons";
 import {toast} from "@/hooks/use-toast";
 import {useRouter} from "next/navigation";
+import config from '../../config';
 
 export default function CheckCards() {
   const cardList = [
@@ -56,7 +57,7 @@ export default function CheckCards() {
   async function onLogin() {
     setIsLoading(true);
 
-    const response = await fetch('https://backend-checkapp.vercel.app/auth/login', {
+    const response = await fetch(`${config.BACKEND_URL}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

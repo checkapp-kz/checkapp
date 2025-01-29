@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
 import { getCookie } from "cookies-next";
 import { Textarea } from "@/components/ui/textarea";
+import config from '../../config';
 
 const Faq = () => {
   const [question, setQuestion] = useState('');
@@ -53,7 +54,7 @@ const Faq = () => {
       // Получаем email из куки если пользователь авторизован, иначе из поля ввода
       const userEmail = isAuthenticated ? getCookie('user-email') : email;
 
-      const response = await fetch('https://backend-checkapp.vercel.app/faq', {
+      const response = await fetch(`${config.BACKEND_URL}/faq`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

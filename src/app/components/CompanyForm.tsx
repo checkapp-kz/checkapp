@@ -6,6 +6,7 @@ import { useCallback, useState, useEffect, useRef } from "react";
 import { toast } from "@/hooks/use-toast";
 import gsap from 'gsap';
 import { cn } from "@/lib/utils";
+import config from '../../config';
 
 const StyledButton = ({ ...props }) => (
   <Button
@@ -75,7 +76,7 @@ const CompanyForm = () => {
 
   const sendMail = useCallback(async () => {
     setIsLoading(true);
-    const response = await fetch('https://backend-checkapp.vercel.app/partner/contact', {
+    const response = await fetch(`${config.BACKEND_URL}/partner/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

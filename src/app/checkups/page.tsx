@@ -4,6 +4,7 @@ import { getCookie } from "cookies-next";
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 import { Card, CardContent } from "@/components/ui/card";
+import config from '../../config';
 
 interface UserTest {
   _id: string;
@@ -26,7 +27,7 @@ export default function CheckupsPage() {
     const fetchTests = async () => {
       try {
         const userId = getCookie('user-id');
-        const response = await fetch(`https://backend-checkapp.vercel.app/test/user-tests/${userId}`);
+        const response = await fetch(`${config.BACKEND_URL}/test/user-tests/${userId}`);
         
         if (response.ok) {
           const data = await response.json();

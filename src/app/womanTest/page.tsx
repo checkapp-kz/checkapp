@@ -10,6 +10,7 @@ import {useReactToPrint} from "react-to-print";
 import WomanTestPrintPage from "@/app/components/WomanTestPrintPage";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import config from '../../config';
 
 export default function WomanTest() {
   const [currentQuestionId, setCurrentQuestionId] = useState('0');
@@ -155,7 +156,7 @@ export default function WomanTest() {
       formData.append('subject', 'Ваш спортивный чекап!');
       formData.append('text', 'Поздравляем вас с прохождение спортивного чекапа! Будьте здоровы!');
 
-      const response = await fetch('https://backend-checkapp.vercel.app/test/send-pdf', {
+      const response = await fetch(`${config.BACKEND_URL}/test/send-pdf`, {
         method: 'POST',
         body: formData,
       });
