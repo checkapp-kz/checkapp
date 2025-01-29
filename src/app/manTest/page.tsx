@@ -10,6 +10,7 @@ import {useReactToPrint} from "react-to-print";
 import ManTestPrintPage from "@/app/components/ManTestPrintPage";
 import { toast } from "@/hooks/use-toast";
 import { getCookie } from "cookies-next";
+import config from '../../config';
 
 export default function ManTest() {
   const [currentQuestionId, setCurrentQuestionId] = useState('0');
@@ -123,7 +124,7 @@ export default function ManTest() {
       const userId = getCookie('user-id');
       
       // Сохраняем тест
-      const saveResponse = await fetch('https://backend-checkapp.vercel.app/test/save', {
+      const saveResponse = await fetch(`${config.BACKEND_URL}/test/save`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -142,7 +143,7 @@ export default function ManTest() {
       const savedTest = await saveResponse.json();
   
       // Создаем платеж
-      const paymentResponse = await fetch('https://backend-checkapp.vercel.app/payment/create-payment', {
+      const paymentResponse = await fetch(`${config.BACKEND_URL}/payment/create-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

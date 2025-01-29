@@ -12,6 +12,7 @@ import {useRouter} from "next/navigation";
 import {toast} from "@/hooks/use-toast";
 import {setCookie} from "cookies-next";
 import Link from "next/link";
+import config from '../../config';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -27,7 +28,7 @@ export function UserResetPassword({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://backend-checkapp.vercel.app/auth/forgot-password', {
+    const response = await fetch(`${config.BACKEND_URL}/auth/forgot-password`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -19,6 +19,7 @@ import {
   DialogTitle
 } from "@/components/ui/dialog";
 import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@/components/ui/input-otp";
+import config from '../../config';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -39,7 +40,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     event.preventDefault();
     setIsLoading(true);
 
-    const response = await fetch('https://backend-checkapp.vercel.app/auth/register', {
+    const response = await fetch(`${config.BACKEND_URL}/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -57,6 +58,12 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       const data = await response.json();
       setUserId(data.userId);
       setOpen(true);
+    } else if (response.status == 400) {
+      const errorData = await response.json();
+      toast({
+        variant: 'destructive',
+        title: errorData.message,
+      })
     } else {
       toast({
         variant: 'destructive',
