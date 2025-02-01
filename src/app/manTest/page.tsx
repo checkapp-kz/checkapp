@@ -1,8 +1,6 @@
 "use client";
 
 import {useEffect, useRef, useState, useContext} from "react";
-import { AuthProvider } from "../../context/AuthContext";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 import {buttonVariants} from "@/components/ui/button";
@@ -26,7 +24,7 @@ export default function ManTest() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [otherAnswer, setOtherAnswer] = useState('');
-  const [showLoginModal, setShowLoginButton] = useState(false);
+  const [showLoginButton, setShowLoginButton] = useState(false);
 
   const auth = useContext(AuthContext);
 
@@ -315,16 +313,16 @@ export default function ManTest() {
               </ul>
               <p>Пройдите анкету и получите персональный план диагностики <b>за 5 минут.</b> <br /> Забота о себе начинается сегодня!</p>
               <div className="flex items-center justify-end">
-                {setShowLoginButton && <Link
+                {showLoginButton && <Link
                   href="/login"
                   className={cn(
-                    buttonVariants({ variant: "ghost" }),
-                    "absolute right-4 top-4 md:right-8 md:top-8 text-[#4B5162]"
+                  buttonVariants({ variant: "ghost" }),
+                  "bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none text-white"
                   )}
                 >
                   Войти
                 </Link>}
-                {!showLoginModal && <Button
+                {!showLoginButton && <Button
                   className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
                   onClick={
                       () => {setCurrentQuestionId('1');}

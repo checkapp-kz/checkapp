@@ -1,12 +1,16 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState, useContext} from "react";
+import Link from "next/link";
+import {cn} from "@/lib/utils";
+import {buttonVariants} from "@/components/ui/button";
 import { SportTest as Test } from "@/app/types/tests";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {useReactToPrint} from "react-to-print";
+import { AuthContext } from "@/context/AuthContext";
 import SportTestPrintPage from "@/app/components/SportTestPrintPage";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
@@ -20,6 +24,9 @@ export default function SportTest() {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [otherAnswer, setOtherAnswer] = useState('');
+  const [showLoginButton, setShowLoginButton] = useState(false);
+
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     if (currentQuestionId === '14') {
@@ -34,6 +41,14 @@ export default function SportTest() {
       }
     }
   }, [currentQuestionId]);
+
+  useEffect(() => {
+    if (!auth?.user) {
+        setShowLoginButton(true);
+    } else {
+        console.log("User is authorized, performing action...");
+    }
+  });
 
   const handleNext = () => {
     // Определяем ответ: если есть текстовое поле (otherAnswer), используем его значение, иначе выбранный вариант
@@ -298,14 +313,22 @@ export default function SportTest() {
               </ul>
               <p>Пройдите онлайн-анкетирование и получите персональные рекомендации за 5 минут. <br /> Занимайтесь спортом безопасно и результативно!</p>
               <div className="flex items-center justify-end">
-                <Button
-                  className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
-                  onClick={() => {
-                    setCurrentQuestionId('1');
-                  }}
+              {showLoginButton && <Link
+                  href="/login"
+                  className={cn(
+                  buttonVariants({ variant: "ghost" }),
+                  "bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none text-white"
+                  )}
                 >
+                  Войти
+                </Link>}
+                {!showLoginButton && <Button
+                  className="bg-[#1D7CBC] hover:bg-[#1D7CBC]/[0.8] border-none"
+                  onClick={
+                      () => {setCurrentQuestionId('1');}
+                  }>
                   Начать
-                </Button>
+                </Button>}
               </div>
             </div>
           )

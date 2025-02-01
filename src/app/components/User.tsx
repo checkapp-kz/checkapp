@@ -37,6 +37,7 @@ const UserComponent = () => {
         setCookie('user-name', data.name);
         setCookie('user-email', data.email);
         setCookie('user-id', data.id);
+        localStorage.setItem("token", data.access_token);
       }
     } catch (error) {
       console.error("Ошибка при получении данных:", error);

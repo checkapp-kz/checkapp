@@ -1,6 +1,7 @@
 import Card1 from "@/public/cards/1.svg";
 import Card2 from "@/public/cards/2.svg";
 import Card3 from "@/public/cards/3.svg";
+import Card4 from "@/public/cards/4.svg";
 
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
@@ -38,7 +39,7 @@ export default function CheckCards() {
       price: '4 990 ₸'
     },
     {
-      img: Card3,
+      img: Card4,
       title: 'Планирование беременности (женский)',
       link: '/manTest',
       price: '4 990 ₸'
